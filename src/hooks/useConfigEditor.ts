@@ -420,6 +420,7 @@ th{color:#4dd68e;font-size:.8rem;text-transform:uppercase}
     addUserRule,
     removeUserRule,
     updateNodeMeta,
+    disconnectAllEdges,
   };
 };
 
