@@ -500,9 +500,15 @@ const EditorCanvas = ({ initialNodes, initialEdges, onSave }: EditorCanvasProps)
   );
 };
 
-const Editor = () => (
+interface EditorProps {
+  initialNodes?: import('@xyflow/react').Node[];
+  initialEdges?: import('@xyflow/react').Edge[];
+  onSave?: (nodes: import('@xyflow/react').Node[], edges: import('@xyflow/react').Edge[]) => void;
+}
+
+const Editor = ({ initialNodes, initialEdges, onSave }: EditorProps = {}) => (
   <ReactFlowProvider>
-    <EditorCanvas />
+    <EditorCanvas initialNodes={initialNodes} initialEdges={initialEdges} onSave={onSave} />
   </ReactFlowProvider>
 );
 
