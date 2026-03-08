@@ -20,6 +20,7 @@ interface AppShellProps {
 
 const navItems = [
   { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/projects', icon: FolderOpen, label: 'Projects' },
   { to: '/editor', icon: Workflow, label: 'Config Editor' },
   { to: '/analytics', icon: BarChart3, label: 'Analytics' },
   { to: '/management', icon: Settings, label: 'Management' },
