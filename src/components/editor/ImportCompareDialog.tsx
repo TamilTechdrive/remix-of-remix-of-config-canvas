@@ -182,7 +182,7 @@ const ImportCompareDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={v => { if (!v) handleReset(); onOpenChange(v); }}>
-      <DialogContent className="max-w-4xl max-h-[85vh] flex flex-col">
+      <DialogContent className="max-w-4xl max-h-[85vh] flex flex-col overflow-hidden">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <GitCompare className="w-5 h-5 text-primary" />
