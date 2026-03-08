@@ -73,51 +73,51 @@
 
 /* React Flow overrides */
 .react-flow__background {
-  background-color: hsl(220 16% 22%) !important;
+  background-color: hsl(218 20% 96%) !important;
 }
 
 .react-flow__minimap {
-  background-color: hsl(220 18% 18%) !important;
-  border: 1px solid hsl(220 12% 34%) !important;
-  border-radius: 0.625rem !important;
+  background-color: hsl(220 16% 98%) !important;
+  border: 1px solid hsl(218 16% 86%) !important;
+  border-radius: 0.5rem !important;
 }
 
 .react-flow__controls {
-  background: hsl(220 14% 26%) !important;
-  border: 1px solid hsl(220 12% 34%) !important;
-  border-radius: 0.625rem !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+  background: hsl(220 18% 100%) !important;
+  border: 1px solid hsl(218 16% 86%) !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
 }
 
 .react-flow__controls button {
-  background: hsl(220 14% 26%) !important;
-  border-color: hsl(220 12% 34%) !important;
-  color: hsl(215 12% 65%) !important;
-  fill: hsl(215 12% 65%) !important;
+  background: hsl(220 18% 100%) !important;
+  border-color: hsl(218 16% 86%) !important;
+  color: hsl(220 10% 46%) !important;
+  fill: hsl(220 10% 46%) !important;
 }
 
 .react-flow__controls button:hover {
-  background: hsl(220 12% 32%) !important;
-  color: hsl(215 20% 93%) !important;
-  fill: hsl(215 20% 93%) !important;
+  background: hsl(218 14% 92%) !important;
+  color: hsl(220 25% 14%) !important;
+  fill: hsl(220 25% 14%) !important;
 }
 
 .react-flow__edge-path {
-  stroke: hsl(220 12% 40%) !important;
+  stroke: hsl(218 16% 76%) !important;
   stroke-width: 2 !important;
 }
 
 .react-flow__edge.selected .react-flow__edge-path {
-  stroke: hsl(168 50% 50%) !important;
+  stroke: hsl(210 75% 48%) !important;
   stroke-width: 3 !important;
 }
 
 .react-flow__edge:hover .react-flow__edge-path {
-  stroke: hsl(168 50% 50% / 0.6) !important;
+  stroke: hsl(210 75% 48% / 0.5) !important;
 }
 
 .react-flow__connection-line {
-  stroke: hsl(168 50% 50%) !important;
+  stroke: hsl(210 75% 48%) !important;
   stroke-dasharray: 5 5;
 }
 
@@ -139,9 +139,9 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(220 12% 36%);
+  background: hsl(218 14% 82%);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(220 12% 42%);
+  background: hsl(218 14% 72%);
 }
