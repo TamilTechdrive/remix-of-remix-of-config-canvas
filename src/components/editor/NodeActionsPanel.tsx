@@ -215,7 +215,7 @@ const NodeActionsPanel = ({
           </TabsTrigger>
         </TabsList>
 
-        <ScrollArea className="flex-1">
+        <ScrollArea className="flex-1 min-h-0">
           {/* Actions Tab - manual rule creation */}
           <TabsContent value="actions" className="p-4 space-y-4 mt-0">
             <div className="bg-accent/5 border border-accent/20 rounded-lg p-3 text-xs space-y-1">
