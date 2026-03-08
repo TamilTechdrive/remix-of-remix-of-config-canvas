@@ -43,6 +43,18 @@ const Projects = () => {
   const [formName, setFormName] = useState('');
   const [formDesc, setFormDesc] = useState('');
   const [formTags, setFormTags] = useState('');
+  const [sampleOpen, setSampleOpen] = useState(false);
+  const [selectedSample, setSelectedSample] = useState<SampleProject | null>(null);
+
+  const sampleCategories = useMemo(() => {
+    const cats = new Map<string, SampleProject[]>();
+    SAMPLE_PROJECTS.forEach(s => {
+      const list = cats.get(s.category) || [];
+      list.push(s);
+      cats.set(s.category, list);
+    });
+    return cats;
+  }, []);
 
   const filtered = store.projects.filter(p => {
     if (statusFilter !== 'all' && p.status !== statusFilter) return false;
