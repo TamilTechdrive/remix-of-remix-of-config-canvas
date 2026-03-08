@@ -39,8 +39,7 @@ const EditorCanvas = () => {
     disconnectAllEdges, disconnectEdge,
   } = useConfigEditor();
 
-  const [showInsights, setShowInsights] = useState(false);
-  const [contextMenu, setContextMenu] = useState<ContextMenuState>({ show: false, x: 0, y: 0, nodeId: null });
+  const [rightPanel, setRightPanel] = useState<'none' | 'actions' | 'properties'>('none');
   const [autoSaveEnabled, setAutoSaveEnabled] = useState(() => {
     const stored = localStorage.getItem('configflow_autosave_enabled');
     return stored !== null ? stored === 'true' : true;
@@ -119,10 +118,13 @@ const EditorCanvas = () => {
     [addNode, screenToFlowPosition]
   );
 
+  const [contextMenu, setContextMenu] = useState<ContextMenuState>({ show: false, x: 0, y: 0, nodeId: null });
+
   const onNodeClick = useCallback(
     (_: React.MouseEvent, node: { id: string }) => {
       setSelectedNodeId(node.id);
-      setShowInsights(true);
+      // Keep current panel open, or open properties by default
+      setRightPanel((prev) => prev === 'none' ? 'properties' : prev);
     },
     [setSelectedNodeId]
   );
@@ -137,8 +139,9 @@ const EditorCanvas = () => {
   );
 
   const onPaneClick = useCallback(() => {
+    // Don't close panel, just deselect node
     setSelectedNodeId(null);
-    setShowInsights(false);
+    setRightPanel('none');
   }, [setSelectedNodeId]);
 
   const onFocusNode = useCallback(
@@ -147,7 +150,7 @@ const EditorCanvas = () => {
       if (node) {
         setCenter(node.position.x + 100, node.position.y + 50, { zoom: 1.5, duration: 500 });
         setSelectedNodeId(nodeId);
-        setShowInsights(true);
+        setRightPanel('actions');
       }
     },
     [nodes, setCenter, setSelectedNodeId]
@@ -289,38 +292,58 @@ const EditorCanvas = () => {
           <NodePalette />
         </div>
 
-        {/* Right panel: Actions */}
-        {selectedNode && showInsights && (
-          <div className="absolute right-0 top-0 bottom-0 z-10 flex">
-            <NodeActionsPanel
-              nodeId={selectedNodeId!}
-              nodes={nodes}
-              edges={edges}
-              rawConfig={SAMPLE_CONFIG}
-              onClose={() => setShowInsights(false)}
-              onFocusNode={onFocusNode}
-              onFixIssue={onFixIssue}
-              onAutoResolveAll={autoResolveAll}
-              onToggleIncluded={onToggleIncluded}
-              onAddUserRule={addUserRule}
-              onRemoveUserRule={removeUserRule}
-              onUpdateNodeMeta={updateNodeMeta}
-            />
-          </div>
-        )}
+        {/* Right panel with tab toggle */}
+        {selectedNode && rightPanel !== 'none' && (
+          <div className="absolute right-0 top-0 bottom-0 z-10 flex flex-col">
+            {/* Panel switcher tabs */}
+            <div className="flex bg-surface-overlay border-b border-l border-border">
+              <button
+                onClick={() => setRightPanel('properties')}
+                className={`px-4 py-2 text-xs font-medium transition-colors ${rightPanel === 'properties' ? 'text-primary border-b-2 border-primary bg-card' : 'text-muted-foreground hover:text-foreground'}`}
+              >
+                Properties
+              </button>
+              <button
+                onClick={() => setRightPanel('actions')}
+                className={`px-4 py-2 text-xs font-medium transition-colors ${rightPanel === 'actions' ? 'text-primary border-b-2 border-primary bg-card' : 'text-muted-foreground hover:text-foreground'}`}
+              >
+                AI Actions
+              </button>
+            </div>
 
-        {selectedNode && !showInsights && (
-          <div className="absolute right-0 top-0 bottom-0 z-10">
-            <PropertiesPanel
-              nodeId={selectedNodeId!}
-              data={selectedNode.data as unknown as ConfigNodeData}
-              onUpdate={updateNodeData}
-              onClose={() => setSelectedNodeId(null)}
-              onDelete={deleteNode}
-              onAutoAdd={autoAddChild}
-              edges={edges}
-              allNodes={nodes}
-            />
+            {rightPanel === 'actions' && (
+              <div className="flex-1 min-h-0">
+                <NodeActionsPanel
+                  nodeId={selectedNodeId!}
+                  nodes={nodes}
+                  edges={edges}
+                  rawConfig={SAMPLE_CONFIG}
+                  onClose={() => setRightPanel('none')}
+                  onFocusNode={onFocusNode}
+                  onFixIssue={onFixIssue}
+                  onAutoResolveAll={autoResolveAll}
+                  onToggleIncluded={onToggleIncluded}
+                  onAddUserRule={addUserRule}
+                  onRemoveUserRule={removeUserRule}
+                  onUpdateNodeMeta={updateNodeMeta}
+                />
+              </div>
+            )}
+
+            {rightPanel === 'properties' && (
+              <div className="flex-1 min-h-0">
+                <PropertiesPanel
+                  nodeId={selectedNodeId!}
+                  data={selectedNode.data as unknown as ConfigNodeData}
+                  onUpdate={updateNodeData}
+                  onClose={() => setRightPanel('none')}
+                  onDelete={deleteNode}
+                  onAutoAdd={autoAddChild}
+                  edges={edges}
+                  allNodes={nodes}
+                />
+              </div>
+            )}
           </div>
         )}
 
@@ -334,7 +357,7 @@ const EditorCanvas = () => {
           onToggleIncluded={onToggleIncluded}
           onToggleVisible={onToggleVisible}
           onFocusNode={onFocusNode}
-          onShowInsights={(nodeId) => { setSelectedNodeId(nodeId); setShowInsights(true); }}
+          onShowInsights={(nodeId) => { setSelectedNodeId(nodeId); setRightPanel('actions'); }}
           onDisconnectAll={disconnectAllEdges}
           onDisconnectEdge={disconnectEdge}
           onCopyNodeId={(nodeId) => { navigator.clipboard.writeText(nodeId); toast.success('Node ID copied'); }}
