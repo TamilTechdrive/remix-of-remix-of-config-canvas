@@ -54,12 +54,13 @@ const ConfigNode = ({ id, data, selected }: NodeProps) => {
   return (
     <div
       className={`
-        relative bg-card border-2 rounded-lg min-w-[200px] transition-all duration-200 group
+        relative bg-card border-2 rounded-lg min-w-[200px] transition-all duration-200 group overflow-visible
         ${colorClassMap[nodeData.type]}
         ${selected ? 'ring-2 ring-primary/50 scale-[1.02]' : ''}
         ${!nodeData.visible ? 'opacity-40' : ''}
         ${isExcluded ? 'opacity-50 border-dashed' : ''}
       `}
+      style={{ zIndex: selected ? 50 : 1 }}
     >
       {/* Top target handle */}
       <Handle
@@ -78,7 +79,7 @@ const ConfigNode = ({ id, data, selected }: NodeProps) => {
       </button>
 
       {/* Top-left: Include/Exclude badge for ALL node types */}
-      <div className="absolute -top-2 -left-2 z-10">
+      <div className="absolute -top-3 -left-2 z-30">
         {isIncluded && (
           <span className="flex items-center gap-0.5 bg-node-module text-primary-foreground text-[8px] font-bold px-1.5 py-0.5 rounded-full">
             <Power className="w-2.5 h-2.5" /> ON
@@ -93,7 +94,7 @@ const ConfigNode = ({ id, data, selected }: NodeProps) => {
 
       {/* Health badges */}
       {(errorCount > 0 || warningCount > 0) && (
-        <div className="absolute -top-2 right-5 z-10 flex gap-0.5">
+        <div className="absolute -top-3 right-5 z-30 flex gap-0.5">
           {errorCount > 0 && (
             <span className="flex items-center gap-0.5 bg-destructive text-destructive-foreground text-[9px] font-bold px-1.5 py-0.5 rounded-full">
               <AlertCircle className="w-2.5 h-2.5" />
@@ -109,7 +110,7 @@ const ConfigNode = ({ id, data, selected }: NodeProps) => {
         </div>
       )}
       {errorCount === 0 && warningCount === 0 && (
-        <div className="absolute -top-2 right-5 z-10">
+        <div className="absolute -top-3 right-5 z-30">
           <span className="flex items-center bg-node-module text-primary-foreground text-[9px] font-bold px-1.5 py-0.5 rounded-full">
             <CheckCircle2 className="w-2.5 h-2.5" />
           </span>
