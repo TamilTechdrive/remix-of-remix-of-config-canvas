@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { Eye, EyeOff, Lock, Mail, ArrowRight, Shield, Fingerprint, Server } from 'lucide-react';
+import { Eye, EyeOff, Lock, Mail, ArrowRight, Shield, Fingerprint, Server, Zap } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const Login = () => {
@@ -10,7 +10,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const { login } = useAuth();
+  const { login, loginDemo } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -23,11 +23,17 @@ const Login = () => {
       toast({ title: 'Welcome back', description: 'Logged in successfully' });
       navigate('/');
     } catch (err: any) {
-      const msg = err.response?.data?.error || err.response?.data?.message || 'Login failed';
+      const msg = err.response?.data?.error || err.response?.data?.message || 'Login failed. Use Demo Mode if backend is not running.';
       setError(msg);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleDemoLogin = () => {
+    loginDemo();
+    toast({ title: 'Demo Mode', description: 'Logged in as Demo Admin' });
+    navigate('/');
   };
 
   return (
@@ -38,7 +44,6 @@ const Login = () => {
         <div className="absolute inset-0" style={{
           backgroundImage: 'radial-gradient(circle at 20% 50%, hsl(160 60% 45% / 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 20%, hsl(260 50% 55% / 0.06) 0%, transparent 40%)',
         }} />
-        {/* Grid pattern */}
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
           backgroundSize: '60px 60px',
@@ -104,6 +109,30 @@ const Login = () => {
             <p className="text-sm text-muted-foreground mt-1.5">Enter your credentials to access your workspace</p>
           </div>
 
+          {/* Demo Mode Card */}
+          <div className="mb-6 p-4 rounded-xl bg-primary/5 border border-primary/20">
+            <div className="flex items-center gap-2 mb-2">
+              <Zap className="w-4 h-4 text-primary" />
+              <span className="text-sm font-semibold text-foreground">Quick Demo Access</span>
+            </div>
+            <p className="text-xs text-muted-foreground mb-3">
+              No backend required. Explore all features instantly.
+            </p>
+            <button
+              onClick={handleDemoLogin}
+              className="w-full h-10 rounded-lg bg-primary/10 border border-primary/30 text-primary font-medium text-sm flex items-center justify-center gap-2 hover:bg-primary/20 transition-all"
+            >
+              <Zap className="w-4 h-4" />
+              Enter Demo Mode
+            </button>
+            <div className="mt-2 grid grid-cols-2 gap-2 text-[10px] text-muted-foreground">
+              <span>📧 admin@configflow.dev</span>
+              <span>👤 Role: Admin</span>
+              <span>🔑 Full permissions</span>
+              <span>💾 Local storage</span>
+            </div>
+          </div>
+
           {error && (
             <div className="mb-5 p-3 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm flex items-start gap-2">
               <Lock className="w-4 h-4 mt-0.5 shrink-0" />
@@ -111,17 +140,19 @@ const Login = () => {
             </div>
           )}
 
+          <div className="relative my-6">
+            <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-border" /></div>
+            <div className="relative flex justify-center text-xs"><span className="bg-background px-3 text-muted-foreground">Or sign in with credentials</span></div>
+          </div>
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-1.5">
               <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Email</label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@configflow.dev"
-                  required
+                  type="email" value={email} onChange={(e) => setEmail(e.target.value)}
+                  placeholder="admin@configflow.dev" required
                   className="w-full h-11 pl-10 pr-4 rounded-lg bg-secondary/50 border border-border text-foreground text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/50 transition-all"
                 />
               </div>
@@ -130,42 +161,27 @@ const Login = () => {
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
                 <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Password</label>
-                <Link to="/forgot-password" className="text-xs text-primary hover:text-primary/80 transition-colors">
-                  Forgot password?
-                </Link>
+                <Link to="/forgot-password" className="text-xs text-primary hover:text-primary/80 transition-colors">Forgot password?</Link>
               </div>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
-                  type={showPassword ? 'text' : 'password'}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••••••"
-                  required
+                  type={showPassword ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••••••" required
                   className="w-full h-11 pl-10 pr-11 rounded-lg bg-secondary/50 border border-border text-foreground text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/50 transition-all"
                 />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
-                >
+                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors">
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
             </div>
 
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full h-11 rounded-lg bg-primary text-primary-foreground font-medium text-sm flex items-center justify-center gap-2 hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all mt-6 group"
-            >
+            <button type="submit" disabled={isLoading}
+              className="w-full h-11 rounded-lg bg-primary text-primary-foreground font-medium text-sm flex items-center justify-center gap-2 hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all mt-6 group">
               {isLoading ? (
                 <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
               ) : (
-                <>
-                  Sign in
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </>
+                <>Sign in <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" /></>
               )}
             </button>
           </form>
@@ -173,13 +189,10 @@ const Login = () => {
           <div className="mt-8 pt-6 border-t border-border text-center">
             <p className="text-sm text-muted-foreground">
               Don't have an account?{' '}
-              <Link to="/register" className="text-primary font-medium hover:text-primary/80 transition-colors">
-                Create account
-              </Link>
+              <Link to="/register" className="text-primary font-medium hover:text-primary/80 transition-colors">Create account</Link>
             </p>
           </div>
 
-          {/* Security badges */}
           <div className="mt-8 flex items-center justify-center gap-4 text-[10px] text-muted-foreground/60">
             <span className="flex items-center gap-1"><Lock className="w-3 h-3" /> TLS Encrypted</span>
             <span className="w-px h-3 bg-border" />
