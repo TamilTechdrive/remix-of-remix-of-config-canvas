@@ -134,6 +134,74 @@ const EditorCanvas = () => {
     if (ok) autoResolveAll(fixes);
   }, [confirm, autoResolveAll]);
 
+  const confirmedDisconnectEdge = useCallback(async (edgeId: string) => {
+    const edge = edges.find(e => e.id === edgeId);
+    if (!edge) return;
+    const srcLabel = (nodes.find(n => n.id === edge.source)?.data as unknown as ConfigNodeData)?.label || edge.source;
+    const tgtLabel = (nodes.find(n => n.id === edge.target)?.data as unknown as ConfigNodeData)?.label || edge.target;
+    const ok = await confirm({
+      title: 'Disconnect Edge',
+      description: `Remove connection from "${srcLabel}" → "${tgtLabel}"?`,
+      confirmLabel: 'Disconnect',
+      variant: 'destructive',
+    });
+    if (ok) disconnectEdge(edgeId);
+  }, [edges, nodes, confirm, disconnectEdge]);
+
+  const confirmedLoadSample = useCallback(async () => {
+    const ok = await confirm({
+      title: 'Load Sample Data',
+      description: 'This will replace all current nodes and connections with sample data. Unsaved changes will be lost.',
+      confirmLabel: 'Load Sample',
+      variant: 'destructive',
+    });
+    if (ok) loadSampleData();
+  }, [confirm, loadSampleData]);
+
+  const confirmedImport = useCallback(async () => {
+    const ok = await confirm({
+      title: 'Import Configuration',
+      description: 'Importing will replace all current nodes and connections. Unsaved changes will be lost.',
+      confirmLabel: 'Continue Import',
+      variant: 'destructive',
+    });
+    if (ok) importConfig();
+  }, [confirm, importConfig]);
+
+  const confirmedToggleIncluded = useCallback(async (nodeId: string) => {
+    const node = nodes.find(n => n.id === nodeId);
+    if (!node) return;
+    const data = node.data as unknown as ConfigNodeData;
+    const current = data.properties?.included === true;
+    const action = current ? 'Exclude' : 'Include';
+    const ok = await confirm({
+      title: `${action} Node`,
+      description: `${action} "${data.label}" ${current ? 'from' : 'in'} the configuration?`,
+      confirmLabel: action,
+    });
+    if (ok) onToggleIncluded(nodeId);
+  }, [nodes, confirm, onToggleIncluded]);
+
+  const confirmedRemoveUserRule = useCallback(async (nodeId: string, ruleId: string) => {
+    const ok = await confirm({
+      title: 'Remove Rule',
+      description: 'Are you sure you want to remove this user-defined rule?',
+      confirmLabel: 'Remove',
+      variant: 'destructive',
+    });
+    if (ok) removeUserRule(nodeId, ruleId);
+  }, [confirm, removeUserRule]);
+
+  const confirmedFixIssue = useCallback(async (issue: RuleIssue) => {
+    if (!issue.fix) return;
+    const ok = await confirm({
+      title: 'Apply Fix',
+      description: `Apply "${issue.fix.label}" to resolve: ${issue.title}?`,
+      confirmLabel: 'Apply Fix',
+    });
+    if (ok) onFixIssue(issue);
+  }, [confirm, onFixIssue]);
+
   // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
