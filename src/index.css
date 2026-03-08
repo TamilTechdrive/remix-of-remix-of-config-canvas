@@ -113,11 +113,11 @@
 }
 
 .react-flow__edge:hover .react-flow__edge-path {
-  stroke: hsl(168 55% 48% / 0.6) !important;
+  stroke: hsl(168 50% 50% / 0.6) !important;
 }
 
 .react-flow__connection-line {
-  stroke: hsl(168 55% 48%) !important;
+  stroke: hsl(168 50% 50%) !important;
   stroke-dasharray: 5 5;
 }
 
