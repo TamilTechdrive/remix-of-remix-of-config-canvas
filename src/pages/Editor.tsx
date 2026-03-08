@@ -150,7 +150,7 @@ const EditorCanvas = () => {
       if (node) {
         setCenter(node.position.x + 100, node.position.y + 50, { zoom: 1.5, duration: 500 });
         setSelectedNodeId(nodeId);
-        setShowInsights(true);
+        setRightPanel('actions');
       }
     },
     [nodes, setCenter, setSelectedNodeId]
