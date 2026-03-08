@@ -54,12 +54,13 @@ const ConfigNode = ({ id, data, selected }: NodeProps) => {
   return (
     <div
       className={`
-        relative bg-card border-2 rounded-lg min-w-[200px] transition-all duration-200 group
+        relative bg-card border-2 rounded-lg min-w-[200px] transition-all duration-200 group overflow-visible
         ${colorClassMap[nodeData.type]}
         ${selected ? 'ring-2 ring-primary/50 scale-[1.02]' : ''}
         ${!nodeData.visible ? 'opacity-40' : ''}
         ${isExcluded ? 'opacity-50 border-dashed' : ''}
       `}
+      style={{ zIndex: selected ? 50 : 1 }}
     >
       {/* Top target handle */}
       <Handle
