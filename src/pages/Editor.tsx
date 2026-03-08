@@ -39,8 +39,7 @@ const EditorCanvas = () => {
     disconnectAllEdges, disconnectEdge,
   } = useConfigEditor();
 
-  const [showInsights, setShowInsights] = useState(false);
-  const [contextMenu, setContextMenu] = useState<ContextMenuState>({ show: false, x: 0, y: 0, nodeId: null });
+  const [rightPanel, setRightPanel] = useState<'none' | 'actions' | 'properties'>('none');
   const [autoSaveEnabled, setAutoSaveEnabled] = useState(() => {
     const stored = localStorage.getItem('configflow_autosave_enabled');
     return stored !== null ? stored === 'true' : true;
