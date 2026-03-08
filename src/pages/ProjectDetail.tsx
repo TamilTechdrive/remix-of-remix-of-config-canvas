@@ -50,6 +50,7 @@ const ProjectDetail = () => {
   const [createBuildOpen, setCreateBuildOpen] = useState(false);
   const [editBuildOpen, setEditBuildOpen] = useState<Build | null>(null);
   const [addModuleOpen, setAddModuleOpen] = useState(false);
+  const [buildCompareOpen, setBuildCompareOpen] = useState(false);
 
   // STB Model form
   const [modelName, setModelName] = useState('');
