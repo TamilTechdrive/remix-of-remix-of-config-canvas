@@ -286,15 +286,15 @@ const ImportCompareDialog = ({
               </div>
             </div>
 
-            <Tabs defaultValue="unified" className="flex-1 min-h-0 flex flex-col">
-              <TabsList className="h-8">
+            <Tabs defaultValue="unified" className="flex-1 min-h-0 flex flex-col overflow-hidden">
+              <TabsList className="h-8 shrink-0">
                 <TabsTrigger value="unified" className="text-xs h-6">Unified Actions</TabsTrigger>
                 <TabsTrigger value="sidebyside" className="text-xs h-6">Side by Side</TabsTrigger>
               </TabsList>
 
               {/* Unified Action List */}
-              <TabsContent value="unified" className="flex-1 min-h-0">
-                <ScrollArea className="h-[300px]">
+              <TabsContent value="unified" className="flex-1 min-h-0 overflow-hidden">
+                <ScrollArea className="h-full max-h-[40vh]">
                   {diffItems.length === 0 ? (
                     <div className="text-center py-10">
                       <CheckCircle2 className="w-8 h-8 text-node-module mx-auto mb-2" />
