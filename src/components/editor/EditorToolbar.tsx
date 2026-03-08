@@ -1,4 +1,4 @@
-import { Upload, ZoomIn, ZoomOut, Maximize2, Database } from 'lucide-react';
+import { Upload, ZoomIn, ZoomOut, Maximize2, Database, GitCompare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { useReactFlow } from '@xyflow/react';
@@ -9,13 +9,14 @@ interface EditorToolbarProps {
   onExport: (format: 'json' | 'xml' | 'html' | 'opt') => void;
   onImport: () => void;
   onLoadSample: () => void;
+  onCompare?: () => void;
   nodeCount: number;
   edgeCount: number;
   onCloudSave: (configData: Record<string, unknown>) => Record<string, unknown>;
   onCloudLoad: (configData: Record<string, unknown>) => void;
 }
 
-const EditorToolbar = ({ onExport, onImport, onLoadSample, nodeCount, edgeCount, onCloudSave, onCloudLoad }: EditorToolbarProps) => {
+const EditorToolbar = ({ onExport, onImport, onLoadSample, onCompare, nodeCount, edgeCount, onCloudSave, onCloudLoad }: EditorToolbarProps) => {
   const { zoomIn, zoomOut, fitView } = useReactFlow();
 
   return (
@@ -54,6 +55,16 @@ const EditorToolbar = ({ onExport, onImport, onLoadSample, nodeCount, edgeCount,
           <Database className="w-3.5 h-3.5" />
           Load Sample
         </Button>
+
+        {onCompare && (
+          <>
+            <Separator orientation="vertical" className="h-5 mx-1" />
+            <Button variant="ghost" size="sm" className="h-7 text-xs gap-1.5" onClick={onCompare}>
+              <GitCompare className="w-3.5 h-3.5" />
+              Import & Compare
+            </Button>
+          </>
+        )}
       </div>
 
       <div className="flex items-center gap-3">

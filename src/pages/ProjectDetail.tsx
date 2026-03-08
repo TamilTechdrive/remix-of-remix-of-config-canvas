@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import {
   ArrowLeft, Plus, Trash2, Pencil, Copy, GitBranch,
   Package, Settings2, Download, ChevronRight, Power,
-  PowerOff, Boxes, Tv, Cpu, ChevronDown,
+  PowerOff, Boxes, Tv, Cpu, ChevronDown, GitCompare,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -30,6 +30,7 @@ import { useConfirmDialog } from '@/hooks/useConfirmDialog';
 import type { Build, BuildModule, ModuleType, STBModel } from '@/types/projectTypes';
 import { BUILD_STATUS_META, MODULE_TYPE_META, PROJECT_STATUS_META } from '@/types/projectTypes';
 import { toast } from 'sonner';
+import ImportCompareDialog from '@/components/editor/ImportCompareDialog';
 
 const ProjectDetail = () => {
   const { projectId } = useParams<{ projectId: string }>();
@@ -49,6 +50,7 @@ const ProjectDetail = () => {
   const [createBuildOpen, setCreateBuildOpen] = useState(false);
   const [editBuildOpen, setEditBuildOpen] = useState<Build | null>(null);
   const [addModuleOpen, setAddModuleOpen] = useState(false);
+  const [buildCompareOpen, setBuildCompareOpen] = useState(false);
 
   // STB Model form
   const [modelName, setModelName] = useState('');
@@ -246,9 +248,16 @@ const ProjectDetail = () => {
             <p className="text-sm text-muted-foreground mt-1 line-clamp-1">{project.description}</p>
           )}
         </div>
-        <Button variant="outline" size="sm" onClick={exportProject} className="gap-1.5">
-          <Download className="w-3.5 h-3.5" /> Export Project
-        </Button>
+        <div className="flex items-center gap-2">
+          {selectedBuild && (
+            <Button variant="outline" size="sm" onClick={() => setBuildCompareOpen(true)} className="gap-1.5">
+              <GitCompare className="w-3.5 h-3.5" /> Import & Compare
+            </Button>
+          )}
+          <Button variant="outline" size="sm" onClick={exportProject} className="gap-1.5">
+            <Download className="w-3.5 h-3.5" /> Export Project
+          </Button>
+        </div>
       </div>
 
       <div className="grid grid-cols-12 gap-6">
@@ -669,6 +678,25 @@ const ProjectDetail = () => {
       </Dialog>
 
       <ConfirmDialog />
+
+      {/* Build-level Import & Compare */}
+      {selectedBuild && selectedModelId && (
+        <ImportCompareDialog
+          open={buildCompareOpen}
+          onOpenChange={setBuildCompareOpen}
+          currentNodes={selectedBuild.modules.flatMap(m => m.nodes)}
+          currentEdges={selectedBuild.modules.flatMap(m => m.edges)}
+          onApply={(mergedNodes, mergedEdges) => {
+            // For build-level: replace the first module's config or distribute back
+            // Simple approach: if build has one module, replace it; otherwise save merged into first module
+            if (selectedBuild.modules.length > 0) {
+              const firstMod = selectedBuild.modules[0];
+              store.saveModuleConfig(project.id, selectedModelId, selectedBuild.id, firstMod.id, mergedNodes, mergedEdges);
+            }
+          }}
+          mode="build"
+        />
+      )}
     </div>
   );
 };

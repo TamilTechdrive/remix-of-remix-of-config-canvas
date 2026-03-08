@@ -26,6 +26,7 @@ import { AlertCircle, Sparkles, Save, CheckCircle2, Loader2, Power } from 'lucid
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { useConfirmDialog } from '@/hooks/useConfirmDialog';
+import ImportCompareDialog from '@/components/editor/ImportCompareDialog';
 
 const nodeTypes: NodeTypes = { configNode: ConfigNode };
 const AUTO_SAVE_INTERVAL = 30000;
@@ -44,11 +45,12 @@ const EditorCanvas = ({ initialNodes, initialEdges, onSave }: EditorCanvasProps)
     deleteNode, setSelectedNodeId,
     exportConfig, importConfig, loadSampleData, autoResolveAll,
     addUserRule, removeUserRule, updateNodeMeta,
-    disconnectAllEdges, disconnectEdge,
+    disconnectAllEdges, disconnectEdge, replaceAll,
   } = useConfigEditor(initialNodes !== undefined ? { initialNodes, initialEdges } : undefined);
 
   const { confirm, ConfirmDialog } = useConfirmDialog();
 
+  const [compareOpen, setCompareOpen] = useState(false);
   const [rightPanel, setRightPanel] = useState<'none' | 'actions' | 'properties'>('none');
   const [autoSaveEnabled, setAutoSaveEnabled] = useState(() => {
     const stored = localStorage.getItem('configflow_autosave_enabled');
@@ -378,6 +380,7 @@ const EditorCanvas = ({ initialNodes, initialEdges, onSave }: EditorCanvasProps)
         onExport={exportConfig}
         onImport={confirmedImport}
         onLoadSample={confirmedLoadSample}
+        onCompare={() => setCompareOpen(true)}
         nodeCount={nodes.length}
         edgeCount={edges.length}
         onCloudSave={() => {
@@ -507,6 +510,14 @@ const EditorCanvas = ({ initialNodes, initialEdges, onSave }: EditorCanvasProps)
         />
       </div>
       <ConfirmDialog />
+      <ImportCompareDialog
+        open={compareOpen}
+        onOpenChange={setCompareOpen}
+        currentNodes={nodes}
+        currentEdges={edges}
+        onApply={(newNodes, newEdges) => replaceAll(newNodes, newEdges)}
+        mode="module"
+      />
     </div>
   );
 };
