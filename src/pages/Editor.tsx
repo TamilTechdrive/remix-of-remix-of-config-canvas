@@ -26,6 +26,7 @@ import { AlertCircle, Sparkles, Save, CheckCircle2, Loader2, Power } from 'lucid
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { useConfirmDialog } from '@/hooks/useConfirmDialog';
+import ImportCompareDialog from '@/components/editor/ImportCompareDialog';
 
 const nodeTypes: NodeTypes = { configNode: ConfigNode };
 const AUTO_SAVE_INTERVAL = 30000;
