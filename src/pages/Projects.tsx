@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Plus, FolderOpen, Copy, Trash2, Pencil, Search,
-  Archive, Tag, Clock, Package, Tv,
+  Archive, Tag, Clock, Package, Tv, FileText,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -20,10 +20,15 @@ import {
   DropdownMenu, DropdownMenuContent, DropdownMenuItem,
   DropdownMenuSeparator, DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import {
+  Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem,
+} from '@/components/ui/command';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { useProjectStore } from '@/hooks/useProjectStore';
 import { useConfirmDialog } from '@/hooks/useConfirmDialog';
 import type { Project } from '@/types/projectTypes';
 import { PROJECT_STATUS_META } from '@/types/projectTypes';
+import { SAMPLE_PROJECTS, type SampleProject } from '@/data/sampleProjects';
 
 const Projects = () => {
   const navigate = useNavigate();
