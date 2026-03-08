@@ -168,7 +168,7 @@
 }
 
 .react-flow__connection-line {
-  stroke: hsl(210 75% 48%) !important;
+  stroke: hsl(var(--primary)) !important;
   stroke-dasharray: 5 5;
 }
 
