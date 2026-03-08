@@ -40,6 +40,8 @@ const EditorCanvas = () => {
     disconnectAllEdges, disconnectEdge,
   } = useConfigEditor();
 
+  const { confirm, ConfirmDialog } = useConfirmDialog();
+
   const [rightPanel, setRightPanel] = useState<'none' | 'actions' | 'properties'>('none');
   const [autoSaveEnabled, setAutoSaveEnabled] = useState(() => {
     const stored = localStorage.getItem('configflow_autosave_enabled');
