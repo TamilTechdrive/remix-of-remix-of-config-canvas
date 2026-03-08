@@ -416,7 +416,7 @@ const EditorCanvas = () => {
           onToggleVisible={onToggleVisible}
           onFocusNode={onFocusNode}
           onShowInsights={(nodeId) => { setSelectedNodeId(nodeId); setRightPanel('actions'); }}
-          onDisconnectAll={disconnectAllEdges}
+          onDisconnectAll={confirmedDisconnectAll}
           onDisconnectEdge={disconnectEdge}
           onCopyNodeId={(nodeId) => { navigator.clipboard.writeText(nodeId); toast.success('Node ID copied'); }}
         />
