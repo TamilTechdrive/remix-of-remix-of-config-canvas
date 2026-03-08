@@ -118,10 +118,13 @@ const EditorCanvas = () => {
     [addNode, screenToFlowPosition]
   );
 
+  const [contextMenu, setContextMenu] = useState<ContextMenuState>({ show: false, x: 0, y: 0, nodeId: null });
+
   const onNodeClick = useCallback(
     (_: React.MouseEvent, node: { id: string }) => {
       setSelectedNodeId(node.id);
-      setShowInsights(true);
+      // Keep current panel open, or open properties by default
+      setRightPanel((prev) => prev === 'none' ? 'properties' : prev);
     },
     [setSelectedNodeId]
   );
@@ -136,8 +139,9 @@ const EditorCanvas = () => {
   );
 
   const onPaneClick = useCallback(() => {
+    // Don't close panel, just deselect node
     setSelectedNodeId(null);
-    setShowInsights(false);
+    setRightPanel('none');
   }, [setSelectedNodeId]);
 
   const onFocusNode = useCallback(
