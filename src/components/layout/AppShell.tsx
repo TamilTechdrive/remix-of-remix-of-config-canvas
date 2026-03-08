@@ -4,7 +4,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import {
   LayoutDashboard, Settings, BarChart3, Users, Shield, User,
   LogOut, ChevronLeft, ChevronRight, Workflow, Menu, X, Bell,
-  Zap,
+  Zap, FolderOpen,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -20,6 +20,7 @@ interface AppShellProps {
 
 const navItems = [
   { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/projects', icon: FolderOpen, label: 'Projects' },
   { to: '/editor', icon: Workflow, label: 'Config Editor' },
   { to: '/analytics', icon: BarChart3, label: 'Analytics' },
   { to: '/management', icon: Settings, label: 'Management' },

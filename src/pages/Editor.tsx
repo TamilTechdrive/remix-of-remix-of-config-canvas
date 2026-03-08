@@ -23,13 +23,20 @@ import { SAMPLE_CONFIG } from '@/data/sampleConfig';
 import { analyzeFullGraph } from '@/engine/ruleEngine';
 import type { RuleIssue } from '@/engine/ruleEngine';
 import { AlertCircle, Sparkles, Save, CheckCircle2, Loader2, Power } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { useConfirmDialog } from '@/hooks/useConfirmDialog';
 
 const nodeTypes: NodeTypes = { configNode: ConfigNode };
 const AUTO_SAVE_INTERVAL = 30000;
 
-const EditorCanvas = () => {
+interface EditorCanvasProps {
+  initialNodes?: import('@xyflow/react').Node[];
+  initialEdges?: import('@xyflow/react').Edge[];
+  onSave?: (nodes: import('@xyflow/react').Node[], edges: import('@xyflow/react').Edge[]) => void;
+}
+
+const EditorCanvas = ({ initialNodes, initialEdges, onSave }: EditorCanvasProps) => {
   const {
     nodes, edges, selectedNodeId, selectedNode,
     onNodesChange, onEdgesChange, onConnect,
@@ -38,7 +45,7 @@ const EditorCanvas = () => {
     exportConfig, importConfig, loadSampleData, autoResolveAll,
     addUserRule, removeUserRule, updateNodeMeta,
     disconnectAllEdges, disconnectEdge,
-  } = useConfigEditor();
+  } = useConfigEditor(initialNodes !== undefined ? { initialNodes, initialEdges } : undefined);
 
   const { confirm, ConfirmDialog } = useConfirmDialog();
 
@@ -355,6 +362,16 @@ const EditorCanvas = () => {
             <><Save className="w-3 h-3 text-primary/60" /><span className="text-primary/60">Auto-save</span></>
           )}
         </button>
+        {onSave && (
+          <Button
+            variant="default"
+            size="sm"
+            className="h-6 text-xs gap-1 ml-2"
+            onClick={() => onSave(nodes, edges)}
+          >
+            <Save className="w-3 h-3" /> Save Module
+          </Button>
+        )}
       </div>
 
       <EditorToolbar
@@ -494,9 +511,15 @@ const EditorCanvas = () => {
   );
 };
 
-const Editor = () => (
+interface EditorProps {
+  initialNodes?: import('@xyflow/react').Node[];
+  initialEdges?: import('@xyflow/react').Edge[];
+  onSave?: (nodes: import('@xyflow/react').Node[], edges: import('@xyflow/react').Edge[]) => void;
+}
+
+const Editor = ({ initialNodes, initialEdges, onSave }: EditorProps = {}) => (
   <ReactFlowProvider>
-    <EditorCanvas />
+    <EditorCanvas initialNodes={initialNodes} initialEdges={initialEdges} onSave={onSave} />
   </ReactFlowProvider>
 );
 
