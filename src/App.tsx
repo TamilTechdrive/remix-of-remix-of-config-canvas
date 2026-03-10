@@ -80,6 +80,11 @@ const AppContent = () => {
                 <AppShell><Profile /></AppShell>
               </ProtectedRoute>
             } />
+            <Route path="/parser-data" element={
+              <ProtectedRoute>
+                <AppShell><ParserData /></AppShell>
+              </ProtectedRoute>
+            } />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
