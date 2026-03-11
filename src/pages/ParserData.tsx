@@ -12,7 +12,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { toast } from 'sonner';
 import {
   Upload, Database, FileCode, FileText, Download, Trash2, ChevronDown, ChevronRight,
-  Layers, GitBranch, Hash, Eye, Loader2, RefreshCw, FileSpreadsheet,
+  Layers, GitBranch, Hash, Eye, Loader2, RefreshCw, FileSpreadsheet, ExternalLink,
 } from 'lucide-react';
 import api from '@/services/api';
 
