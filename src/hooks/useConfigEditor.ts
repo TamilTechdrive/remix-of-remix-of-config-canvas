@@ -535,6 +535,7 @@ th{color:#4dd68e;font-size:.8rem;text-transform:uppercase}
     disconnectAllEdges,
     disconnectEdge,
     replaceAll,
+    loadRawConfig,
   };
 };
 
