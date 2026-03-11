@@ -125,6 +125,7 @@ app.use('/api/configurations', doubleCsrfProtection, configRoutes);
 app.use('/api/config-data', configDataRoutes);
 app.use('/api/audit', auditRoutes);
 app.use('/api/parser', parserRoutes);
+app.use('/api/projects', projectRoutes);
 
 // ===== HEALTH CHECK =====
 app.get('/api/health', async (_req, res) => {
