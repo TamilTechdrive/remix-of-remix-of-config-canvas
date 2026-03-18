@@ -20,6 +20,8 @@ import Management from "./pages/Management";
 import AdminPanel from "./pages/AdminPanel";
 import Profile from "./pages/Profile";
 import ParserData from "./pages/ParserData";
+import OptionsMapping from "./pages/OptionsMapping";
+import OptionsViewer from "./pages/OptionsViewer";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
