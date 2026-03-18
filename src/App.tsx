@@ -87,6 +87,16 @@ const AppContent = () => {
                 <AppShell><ParserData /></AppShell>
               </ProtectedRoute>
             } />
+            <Route path="/options-mapping" element={
+              <ProtectedRoute>
+                <AppShell><OptionsMapping /></AppShell>
+              </ProtectedRoute>
+            } />
+            <Route path="/options-viewer" element={
+              <ProtectedRoute>
+                <AppShell><OptionsViewer /></AppShell>
+              </ProtectedRoute>
+            } />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

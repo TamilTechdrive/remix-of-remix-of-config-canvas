@@ -26,6 +26,8 @@ const navItems = [
   { to: '/management', icon: Settings, label: 'Management' },
   { to: '/admin', icon: Shield, label: 'Admin Panel' },
   { to: '/parser-data', icon: FileCode, label: 'Parser Data' },
+  { to: '/options-mapping', icon: Grid3X3, label: 'Options Mapping' },
+  { to: '/options-viewer', icon: Eye, label: 'Options Viewer' },
   { to: '/profile', icon: User, label: 'Profile' },
 ];
 
