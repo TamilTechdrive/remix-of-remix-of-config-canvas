@@ -54,6 +54,10 @@ if ($rawBody) {
 // Initialize router
 $router = new Router();
 
+// Map handlers that don't follow naming convention
+$router->mapHandler('csrf_token', 'health.php');
+$router->mapHandler('health_check', 'health.php');
+
 // ===== ROUTES =====
 
 // Health check
