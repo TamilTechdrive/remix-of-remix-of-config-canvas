@@ -1,6 +1,6 @@
 <?php
 /**
- * Health check handler
+ * Health check and utility handlers
  */
 
 function health_check($params, $body) {
@@ -32,4 +32,9 @@ function health_check($params, $body) {
         ),
         'timestamp' => date('Y-m-d H:i:s'),
     ));
+}
+
+function csrf_token($params, $body) {
+    $token = Security::generateCsrfToken();
+    Response::success(array('csrfToken' => $token));
 }

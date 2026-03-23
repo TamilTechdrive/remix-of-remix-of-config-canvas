@@ -66,7 +66,16 @@ class Router {
         return $params;
     }
 
+    private $handlerMap = array();
+
+    public function mapHandler($handlerName, $fileName) {
+        $this->handlerMap[$handlerName] = $fileName;
+    }
+
     private function handlerFile($handlerName) {
+        if (isset($this->handlerMap[$handlerName])) {
+            return $this->handlerMap[$handlerName];
+        }
         $parts = explode('_', $handlerName, 2);
         return $parts[0] . '.php';
     }

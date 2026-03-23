@@ -83,3 +83,14 @@ function features_update($params, $body) {
 
     Response::success(null, 'Feature updated');
 }
+
+function features_delete($params, $body) {
+    Auth::requireAuth();
+    $id = $params['id'];
+
+    $db = Database::forTable('features');
+    if ($db['type'] === 'mssql') { Database::odbcQuery("DELETE FROM features WHERE id = ?", array($id)); }
+    else { Database::mysqlQuery("DELETE FROM features WHERE id = ?", array($id)); }
+
+    Response::success(null, 'Feature deleted');
+}
