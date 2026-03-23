@@ -95,6 +95,7 @@ $router->delete('/api/parser/sessions/:id', 'parser_sessions_delete');
 $router->get('/api/features', 'features_list');
 $router->post('/api/features', 'features_create');
 $router->put('/api/features/:id', 'features_update');
+$router->delete('/api/features/:id', 'features_delete');
 
 // Dispatch
 $router->dispatch($method, $path, $body);
