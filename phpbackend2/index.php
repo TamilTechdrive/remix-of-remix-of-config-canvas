@@ -1,18 +1,17 @@
 <?php
 /**
- * PHP 5.3.10 Compatible Backend - Main Entry Point
- * No composer, no modern extensions required.
- * ODBC + MSSQL 2008 + MySQL dual connection support.
+ * PHP 5.3.10 Compatible Backend - Single Entry Point
+ * All requests via: index.php?rtype=xxx&action=yyy&id=zzz
+ * No Apache rewrite rules needed.
  */
 
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 
-// Load config
+// Load libs
 require_once dirname(__FILE__) . '/config.php';
 require_once dirname(__FILE__) . '/lib/Database.php';
-require_once dirname(__FILE__) . '/lib/Router.php';
 require_once dirname(__FILE__) . '/lib/Response.php';
 require_once dirname(__FILE__) . '/lib/Auth.php';
 require_once dirname(__FILE__) . '/lib/Security.php';
@@ -34,14 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-// Parse request
-$method = $_SERVER['REQUEST_METHOD'];
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$basePath = $GLOBALS['CONFIG']['base_path'];
-$path = substr($uri, strlen($basePath));
-if ($path === false) $path = '/';
-
-// Get request body
+// Parse request body
 $body = array();
 $rawBody = file_get_contents('php://input');
 if ($rawBody) {
@@ -51,55 +43,136 @@ if ($rawBody) {
     }
 }
 
-// Initialize router
-$router = new Router();
+// Query params
+$rtype  = isset($_GET['rtype'])  ? strtolower(trim($_GET['rtype']))  : '';
+$action = isset($_GET['action']) ? strtolower(trim($_GET['action'])) : '';
+$id     = isset($_GET['id'])     ? trim($_GET['id'])     : '';
+$pid    = isset($_GET['pid'])    ? trim($_GET['pid'])    : '';  // parent id (project_id, model_id, etc.)
 
-// Map handlers that don't follow naming convention
-$router->mapHandler('csrf_token', 'health.php');
-$router->mapHandler('health_check', 'health.php');
+if (!$rtype) {
+    Response::error('Missing rtype parameter', 400);
+}
 
-// ===== ROUTES =====
+// ===== HANDLER DISPATCH =====
 
-// Health check
-$router->get('/health', 'health_check');
+// Load handler files on demand
+$handlerFiles = array(
+    'health'   => 'health.php',
+    'csrf'     => 'health.php',
+    'auth'     => 'auth.php',
+    'projects' => 'projects.php',
+    'stb'      => 'stb.php',
+    'builds'   => 'builds.php',
+    'parser'   => 'parser.php',
+    'features' => 'features.php',
+);
 
-// CSRF token endpoint
-$router->get('/api/csrf-token', 'csrf_token');
+$handlerFile = isset($handlerFiles[$rtype]) ? $handlerFiles[$rtype] : null;
+if (!$handlerFile) {
+    Response::error('Unknown rtype: ' . $rtype, 400);
+}
 
-// Auth routes
-$router->post('/api/auth/login', 'auth_login');
-$router->post('/api/auth/register', 'auth_register');
-$router->post('/api/auth/logout', 'auth_logout');
-$router->get('/api/auth/me', 'auth_me');
+require_once dirname(__FILE__) . '/handlers/' . $handlerFile;
 
-// Project routes
-$router->get('/api/projects', 'projects_list');
-$router->get('/api/projects/:id', 'projects_get');
-$router->post('/api/projects', 'projects_create');
-$router->put('/api/projects/:id', 'projects_update');
-$router->delete('/api/projects/:id', 'projects_delete');
+// Build params array from query string
+$params = array(
+    'id'        => $id,
+    'pid'       => $pid,
+    'projectId' => $pid ? $pid : (isset($_GET['projectId']) ? $_GET['projectId'] : ''),
+    'modelId'   => isset($_GET['modelId']) ? $_GET['modelId'] : $pid,
+    'buildId'   => isset($_GET['buildId']) ? $_GET['buildId'] : '',
+    'module'    => isset($_GET['module'])  ? $_GET['module']  : '',
+);
 
-// STB Model routes
-$router->post('/api/projects/:projectId/stb-models', 'stb_models_create');
-$router->put('/api/projects/stb-models/:id', 'stb_models_update');
-$router->delete('/api/projects/stb-models/:id', 'stb_models_delete');
+// ===== ROUTE TABLE =====
+// Format: rtype => array( action => handler_function )
 
-// Build routes
-$router->post('/api/projects/stb-models/:modelId/builds', 'builds_create');
-$router->put('/api/projects/builds/:id', 'builds_update');
-$router->delete('/api/projects/builds/:id', 'builds_delete');
+switch ($rtype) {
 
-// Parser routes
-$router->post('/api/parser/seed', 'parser_seed');
-$router->get('/api/parser/sessions', 'parser_sessions_list');
-$router->get('/api/parser/sessions/:id', 'parser_sessions_get');
-$router->delete('/api/parser/sessions/:id', 'parser_sessions_delete');
+    // ----- Health -----
+    case 'health':
+        health_check($params, $body);
+        break;
 
-// Features table
-$router->get('/api/features', 'features_list');
-$router->post('/api/features', 'features_create');
-$router->put('/api/features/:id', 'features_update');
-$router->delete('/api/features/:id', 'features_delete');
+    // ----- CSRF -----
+    case 'csrf':
+        if ($action === 'token' || $action === 'generate') {
+            csrf_token($params, $body);
+        } elseif ($action === 'verify') {
+            $token = isset($body['token']) ? $body['token'] : (isset($_GET['token']) ? $_GET['token'] : '');
+            $valid = Security::validateCsrfToken($token);
+            Response::success(array('valid' => $valid));
+        } else {
+            csrf_token($params, $body);
+        }
+        break;
 
-// Dispatch
-$router->dispatch($method, $path, $body);
+    // ----- Auth -----
+    case 'auth':
+        switch ($action) {
+            case 'login':    auth_login($params, $body);    break;
+            case 'register': auth_register($params, $body); break;
+            case 'logout':   auth_logout($params, $body);   break;
+            case 'me':       auth_me($params, $body);       break;
+            default:         Response::error('Unknown auth action: ' . $action, 400);
+        }
+        break;
+
+    // ----- Projects -----
+    case 'projects':
+        switch ($action) {
+            case 'list':   projects_list($params, $body);   break;
+            case 'get':    projects_get($params, $body);    break;
+            case 'create': projects_create($params, $body); break;
+            case 'update': projects_update($params, $body); break;
+            case 'delete': projects_delete($params, $body); break;
+            default:       Response::error('Unknown projects action: ' . $action, 400);
+        }
+        break;
+
+    // ----- STB Models -----
+    case 'stb':
+        switch ($action) {
+            case 'create': stb_models_create($params, $body); break;
+            case 'update': stb_models_update($params, $body); break;
+            case 'delete': stb_models_delete($params, $body); break;
+            default:       Response::error('Unknown stb action: ' . $action, 400);
+        }
+        break;
+
+    // ----- Builds -----
+    case 'builds':
+        switch ($action) {
+            case 'create': builds_create($params, $body); break;
+            case 'update': builds_update($params, $body); break;
+            case 'delete': builds_delete($params, $body); break;
+            default:       Response::error('Unknown builds action: ' . $action, 400);
+        }
+        break;
+
+    // ----- Parser -----
+    case 'parser':
+        switch ($action) {
+            case 'seed':           parser_seed($params, $body);           break;
+            case 'sessions':
+            case 'sessions_list':  parser_sessions_list($params, $body);  break;
+            case 'session_get':    parser_sessions_get($params, $body);   break;
+            case 'session_delete': parser_sessions_delete($params, $body); break;
+            default:               Response::error('Unknown parser action: ' . $action, 400);
+        }
+        break;
+
+    // ----- Features -----
+    case 'features':
+        switch ($action) {
+            case 'list':   features_list($params, $body);   break;
+            case 'create': features_create($params, $body); break;
+            case 'update': features_update($params, $body); break;
+            case 'delete': features_delete($params, $body); break;
+            default:       Response::error('Unknown features action: ' . $action, 400);
+        }
+        break;
+
+    default:
+        Response::error('Unknown rtype: ' . $rtype, 400);
+}

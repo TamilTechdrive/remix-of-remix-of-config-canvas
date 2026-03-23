@@ -5,7 +5,7 @@
  */
 
 $GLOBALS['CONFIG'] = array(
-    // Base URL path (if hosted in subfolder, e.g., '/phpbackend2')
+    // Base URL path (no longer needed for routing, kept for reference)
     'base_path' => '/phpbackend2',
 
     // CORS allowed origins
