@@ -59,6 +59,9 @@ $router = new Router();
 // Health check
 $router->get('/health', 'health_check');
 
+// CSRF token endpoint
+$router->get('/api/csrf-token', 'csrf_token');
+
 // Auth routes
 $router->post('/api/auth/login', 'auth_login');
 $router->post('/api/auth/register', 'auth_register');

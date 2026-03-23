@@ -39,6 +39,8 @@ if (!function_exists('http_response_code')) {
                 case 401: $text = 'Unauthorized'; break;
                 case 403: $text = 'Forbidden'; break;
                 case 404: $text = 'Not Found'; break;
+                case 409: $text = 'Conflict'; break;
+                case 429: $text = 'Too Many Requests'; break;
                 case 500: $text = 'Internal Server Error'; break;
                 default: $text = 'Unknown'; break;
             }

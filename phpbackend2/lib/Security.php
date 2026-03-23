@@ -15,7 +15,8 @@ class Security {
         header('X-XSS-Protection: 1; mode=block');
         // Note: CSP and HSTS may not be supported by all older browsers
         // but setting them doesn't hurt
-        header('Content-Security-Policy: default-src \'self\'');
+        // CSP relaxed for API responses
+        // header('Content-Security-Policy: default-src \'self\'');
         header('Cache-Control: no-store, no-cache, must-revalidate');
         header('Pragma: no-cache');
     }
