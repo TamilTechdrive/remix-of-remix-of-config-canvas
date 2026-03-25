@@ -2,9 +2,17 @@
 /**
  * Authentication - PHP 5.3.10 compatible
  * Uses SHA256 + salt (no password_hash available in 5.3)
+ * Respects security_enabled flag from config
  */
 
 class Auth {
+
+    /**
+     * Check if security/auth is enabled
+     */
+    public static function isEnabled() {
+        return !empty($GLOBALS['CONFIG']['security_enabled']);
+    }
 
     /**
      * Hash password with salt
@@ -72,6 +80,11 @@ class Auth {
      * Get current user from request
      */
     public static function getCurrentUser() {
+        // If security is disabled, return a default user
+        if (!self::isEnabled()) {
+            return array('userId' => 'local', 'email' => 'local@user');
+        }
+
         $authHeader = isset($_SERVER['HTTP_AUTHORIZATION']) ? $_SERVER['HTTP_AUTHORIZATION'] : '';
         if (strpos($authHeader, 'Bearer ') !== 0) return null;
 
@@ -80,9 +93,14 @@ class Auth {
     }
 
     /**
-     * Require authentication
+     * Require authentication (respects security_enabled flag)
      */
     public static function requireAuth() {
+        // If security is disabled, return default user - no auth check
+        if (!self::isEnabled()) {
+            return array('userId' => 'local', 'email' => 'local@user');
+        }
+
         $user = self::getCurrentUser();
         if (!$user) {
             Response::error('Authentication required', 401);

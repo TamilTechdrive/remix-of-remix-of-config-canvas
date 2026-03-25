@@ -139,6 +139,11 @@ CREATE TABLE IF NOT EXISTS parser_define_var_hits (
     INDEX idx_var (define_var_id)
 ) ENGINE=InnoDB;
 
+-- Parser Sessions - add project/build/module columns
+-- ALTER TABLE parser_sessions ADD COLUMN project_id VARCHAR(36) DEFAULT '';
+-- ALTER TABLE parser_sessions ADD COLUMN build_id VARCHAR(36) DEFAULT '';
+-- ALTER TABLE parser_sessions ADD COLUMN module_id VARCHAR(100) DEFAULT '';
+
 -- Configurations
 CREATE TABLE IF NOT EXISTS configurations (
     id VARCHAR(36) PRIMARY KEY,
@@ -153,4 +158,43 @@ CREATE TABLE IF NOT EXISTS configurations (
     updated_at DATETIME NOT NULL,
     INDEX idx_user (user_id),
     INDEX idx_build (build_id)
+) ENGINE=InnoDB;
+
+-- Config Nodes
+CREATE TABLE IF NOT EXISTS config_nodes (
+    id VARCHAR(36) PRIMARY KEY,
+    config_id VARCHAR(36) NOT NULL,
+    node_type VARCHAR(50),
+    label VARCHAR(255),
+    position_x DECIMAL(10,2) DEFAULT 0,
+    position_y DECIMAL(10,2) DEFAULT 0,
+    properties LONGTEXT,
+    created_at DATETIME NOT NULL,
+    FOREIGN KEY (config_id) REFERENCES configurations(id) ON DELETE CASCADE,
+    INDEX idx_config (config_id)
+) ENGINE=InnoDB;
+
+-- Config Edges
+CREATE TABLE IF NOT EXISTS config_edges (
+    id VARCHAR(36) PRIMARY KEY,
+    config_id VARCHAR(36) NOT NULL,
+    source_id VARCHAR(36),
+    target_id VARCHAR(36),
+    edge_type VARCHAR(50) DEFAULT 'default',
+    label VARCHAR(255),
+    created_at DATETIME NOT NULL,
+    FOREIGN KEY (config_id) REFERENCES configurations(id) ON DELETE CASCADE,
+    INDEX idx_config (config_id)
+) ENGINE=InnoDB;
+
+-- Config Snapshots
+CREATE TABLE IF NOT EXISTS config_snapshots (
+    id VARCHAR(36) PRIMARY KEY,
+    config_id VARCHAR(36) NOT NULL,
+    name VARCHAR(200),
+    description TEXT,
+    snapshot_data LONGTEXT,
+    created_at DATETIME NOT NULL,
+    FOREIGN KEY (config_id) REFERENCES configurations(id) ON DELETE CASCADE,
+    INDEX idx_config (config_id)
 ) ENGINE=InnoDB;

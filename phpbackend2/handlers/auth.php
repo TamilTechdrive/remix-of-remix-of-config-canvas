@@ -1,6 +1,7 @@
 <?php
 /**
  * Auth handlers - PHP 5.3.10 compatible
+ * Respects security_enabled flag
  */
 
 function auth_login($params, $body) {
@@ -11,9 +12,25 @@ function auth_login($params, $body) {
         Response::error('Email and password required', 400);
     }
 
+    // If security is disabled, return a mock successful login
+    if (!Auth::isEnabled()) {
+        Response::success(array(
+            'accessToken' => 'no-auth-token',
+            'user' => array(
+                'id' => 'local',
+                'email' => $email,
+                'username' => explode('@', $email),
+                'displayName' => 'Local User',
+            ),
+        ), 'Login successful');
+        return;
+    }
+
     // Check rate limiting
-    if (!Security::checkRateLimit('login_' . $email, $GLOBALS['CONFIG']['security']['max_login_attempts'], $GLOBALS['CONFIG']['security']['lockout_duration'])) {
-        Response::error('Too many login attempts. Try again later.', 429);
+    if ($GLOBALS['CONFIG']['security']['rate_limiting_enabled']) {
+        if (!Security::checkRateLimit('login_' . $email, $GLOBALS['CONFIG']['security']['max_login_attempts'], $GLOBALS['CONFIG']['security']['lockout_duration'])) {
+            Response::error('Too many login attempts. Try again later.', 429);
+        }
     }
 
     $result = Database::mysqlQuery(
@@ -41,19 +58,13 @@ function auth_login($params, $body) {
 
     $token = Auth::generateToken($user['id'], $user['email']);
 
-    // Log audit
-    Database::mysqlQuery(
-        "INSERT INTO audit_logs (user_id, event, resource, ip_address, created_at) VALUES (?, ?, ?, ?, NOW())",
-        array($user['id'], 'LOGIN', 'auth', isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '')
-    );
-
     Response::success(array(
         'accessToken' => $token,
         'user' => array(
             'id' => $user['id'],
             'email' => $user['email'],
             'username' => $user['username'],
-            'displayName' => $user['display_name'],
+            'displayName' => isset($user['display_name']) ? $user['display_name'] : $user['username'],
         ),
     ), 'Login successful');
 }
@@ -66,6 +77,19 @@ function auth_register($params, $body) {
 
     if (!$email || !$username || !$password) {
         Response::error('Email, username, and password required', 400);
+    }
+
+    if (!Auth::isEnabled()) {
+        Response::success(array(
+            'accessToken' => 'no-auth-token',
+            'user' => array(
+                'id' => 'local',
+                'email' => $email,
+                'username' => $username,
+                'displayName' => $displayName,
+            ),
+        ), 'Registered');
+        return;
     }
 
     if (!Security::isValidEmail($email)) {
@@ -93,8 +117,7 @@ function auth_register($params, $body) {
 
     $token = Auth::generateToken($id, $email);
 
-    Response::json(array(
-        'success' => true,
+    Response::success(array(
         'accessToken' => $token,
         'user' => array(
             'id' => $id,
@@ -102,7 +125,7 @@ function auth_register($params, $body) {
             'username' => $username,
             'displayName' => $displayName,
         ),
-    ), 201);
+    ), 'Registered');
 }
 
 function auth_logout($params, $body) {
@@ -111,6 +134,19 @@ function auth_logout($params, $body) {
 
 function auth_me($params, $body) {
     $user = Auth::requireAuth();
+
+    if (!Auth::isEnabled()) {
+        Response::success(array(
+            'id' => 'local',
+            'email' => 'local@user',
+            'username' => 'local',
+            'displayName' => 'Local User',
+            'isActive' => true,
+            'roles' => array('admin'),
+            'createdAt' => date('Y-m-d H:i:s'),
+        ));
+        return;
+    }
 
     $result = Database::mysqlQuery(
         "SELECT id, email, username, display_name, is_active, created_at FROM users WHERE id = ? LIMIT 1",
@@ -140,7 +176,7 @@ function auth_me($params, $body) {
         'id' => $u['id'],
         'email' => $u['email'],
         'username' => $u['username'],
-        'displayName' => $u['display_name'],
+        'displayName' => isset($u['display_name']) ? $u['display_name'] : $u['username'],
         'isActive' => (bool)$u['is_active'],
         'roles' => $roles,
         'createdAt' => $u['created_at'],

@@ -7,13 +7,11 @@ function health_check($params, $body) {
     $mysqlOk = false;
     $mssqlOk = false;
 
-    // Test MySQL
     $conn = Database::mysql();
     if ($conn) {
         $mysqlOk = true;
     }
 
-    // Test MSSQL
     if ($GLOBALS['CONFIG']['mssql']['enabled']) {
         $conn = Database::mssql();
         if ($conn) {
@@ -26,15 +24,11 @@ function health_check($params, $body) {
         'php_version' => phpversion(),
         'mysql' => $mysqlOk ? 'connected' : 'disconnected',
         'mssql_odbc' => $GLOBALS['CONFIG']['mssql']['enabled'] ? ($mssqlOk ? 'connected' : 'disconnected') : 'disabled',
+        'security_enabled' => !empty($GLOBALS['CONFIG']['security_enabled']),
         'security' => array(
             'csrf' => $GLOBALS['CONFIG']['security']['csrf_enabled'],
             'rate_limiting' => $GLOBALS['CONFIG']['security']['rate_limiting_enabled'],
         ),
         'timestamp' => date('Y-m-d H:i:s'),
     ));
-}
-
-function csrf_token($params, $body) {
-    $token = Security::generateCsrfToken();
-    Response::success(array('csrfToken' => $token));
 }
