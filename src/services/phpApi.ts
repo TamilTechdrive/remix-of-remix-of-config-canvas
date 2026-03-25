@@ -1,12 +1,14 @@
 import axios from 'axios';
+import { getApiConfig, isSecurityEnabled } from './apiConfig';
 
 // PHP Backend API - query-param based routing
 // All requests go to: index.php?rtype=xxx&action=yyy&id=zzz
-const PHP_BASE_URL = import.meta.env.VITE_PHP_API_URL || 'http://localhost/phpbackend2';
-const PHP_ENTRY = `${PHP_BASE_URL}/index.php`;
 
-const phpApi = axios.create({
-  baseURL: PHP_ENTRY,
+function getPhpEntry() {
+  return `${getApiConfig().phpBaseUrl}/index.php`;
+}
+
+const phpAxios = axios.create({
   withCredentials: true,
   headers: { 'Content-Type': 'application/json' },
   timeout: 15000,
@@ -27,17 +29,23 @@ export function getPhpAccessToken(): string | null {
 }
 
 // ===== REQUEST INTERCEPTOR =====
-phpApi.interceptors.request.use((config) => {
-  const token = getPhpAccessToken();
-  if (token) config.headers.Authorization = `Bearer ${token}`;
+phpAxios.interceptors.request.use((config) => {
+  // Set baseURL dynamically
+  config.baseURL = getPhpEntry();
+  
+  // Only attach token if security is enabled
+  if (isSecurityEnabled()) {
+    const token = getPhpAccessToken();
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+  }
   return config;
 });
 
 // ===== RESPONSE INTERCEPTOR =====
-phpApi.interceptors.response.use(
+phpAxios.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    if (error.response?.status === 401 && isSecurityEnabled()) {
       setPhpAccessToken(null);
     }
     return Promise.reject(error);
@@ -55,117 +63,285 @@ function qs(params: Record<string, string | undefined>): string {
   return parts.length ? '?' + parts.join('&') : '';
 }
 
-// ===== HELPER: extract data from PHP response wrapper =====
-function extractData<T = any>(response: { data: { success: boolean; data?: T; error?: string } }): T {
-  if (!response.data.success) {
-    throw new Error(response.data.error || 'Request failed');
+// ===== HELPER: extract data from PHP response =====
+// PHP returns: { success: true, data: {...} } or { success: true, accessToken: "...", user: {...} }
+export function extractPhpData<T = any>(response: { data: any }): T {
+  const d = response.data;
+  // If response has { success, data } wrapper
+  if (d && typeof d === 'object' && 'success' in d) {
+    if (!d.success) throw new Error(d.error || 'Request failed');
+    if ('data' in d && d.data !== undefined) return d.data as T;
+    // Some endpoints return data at top level (e.g. register returns accessToken at top)
+    return d as T;
   }
-  return response.data.data as T;
+  return d as T;
 }
 
 // ===== AUTH API =====
 export const phpAuthApi = {
   login: async (data: { email: string; password: string }) => {
-    const res = await phpApi.post(qs({ rtype: 'auth', action: 'login' }), data);
-    if (res.data.success || res.data.accessToken) {
-      const token = res.data.data?.accessToken || res.data.accessToken;
+    const res = await phpAxios.post(qs({ rtype: 'auth', action: 'login' }), data);
+    const d = res.data;
+    // Token could be at d.data.accessToken or d.accessToken
+    const token = d?.data?.accessToken || d?.accessToken;
+    if (token && isSecurityEnabled()) {
       setPhpAccessToken(token);
     }
-    return res;
+    // Normalize response to match node format: { accessToken, user }
+    const user = d?.data?.user || d?.user;
+    return { data: { accessToken: token, user } };
   },
 
   register: async (data: { email: string; username: string; password: string; displayName?: string }) => {
-    const res = await phpApi.post(qs({ rtype: 'auth', action: 'register' }), data);
-    if (res.data.success || res.data.accessToken) {
-      const token = res.data.data?.accessToken || res.data.accessToken;
+    const res = await phpAxios.post(qs({ rtype: 'auth', action: 'register' }), data);
+    const d = res.data;
+    const token = d?.data?.accessToken || d?.accessToken;
+    if (token && isSecurityEnabled()) {
       setPhpAccessToken(token);
     }
-    return res;
+    const user = d?.data?.user || d?.user;
+    return { data: { accessToken: token, user } };
   },
 
   logout: async () => {
-    const res = await phpApi.post(qs({ rtype: 'auth', action: 'logout' }));
+    const res = await phpAxios.post(qs({ rtype: 'auth', action: 'logout' }));
     setPhpAccessToken(null);
     return res;
   },
 
-  me: () => phpApi.get(qs({ rtype: 'auth', action: 'me' })),
+  me: async () => {
+    const res = await phpAxios.get(qs({ rtype: 'auth', action: 'me' }));
+    // Normalize: node returns data at res.data directly, PHP wraps in { success, data }
+    const d = extractPhpData(res);
+    return { data: d };
+  },
 };
 
 // ===== PROJECT API =====
 export const phpProjectApi = {
-  list: () => phpApi.get(qs({ rtype: 'projects', action: 'list' })),
-
-  get: (id: string) => phpApi.get(qs({ rtype: 'projects', action: 'get', id })),
-
-  create: (data: { name: string; description?: string; tags?: string[] }) =>
-    phpApi.post(qs({ rtype: 'projects', action: 'create' }), data),
-
-  update: (id: string, data: { name?: string; description?: string; tags?: string[]; status?: string }) =>
-    phpApi.post(qs({ rtype: 'projects', action: 'update', id }), data),
-
-  delete: (id: string) =>
-    phpApi.post(qs({ rtype: 'projects', action: 'delete', id })),
+  list: async () => {
+    const res = await phpAxios.get(qs({ rtype: 'projects', action: 'list' }));
+    return { data: extractPhpData(res) };
+  },
+  get: async (id: string) => {
+    const res = await phpAxios.get(qs({ rtype: 'projects', action: 'get', id }));
+    return { data: extractPhpData(res) };
+  },
+  create: async (data: { name: string; description?: string; tags?: string[] }) => {
+    const res = await phpAxios.post(qs({ rtype: 'projects', action: 'create' }), data);
+    return { data: extractPhpData(res) };
+  },
+  update: async (id: string, data: { name?: string; description?: string; tags?: string[]; status?: string }) => {
+    const res = await phpAxios.post(qs({ rtype: 'projects', action: 'update', id }), data);
+    return { data: extractPhpData(res) };
+  },
+  delete: async (id: string) => {
+    const res = await phpAxios.post(qs({ rtype: 'projects', action: 'delete', id }));
+    return { data: extractPhpData(res) };
+  },
 
   // STB Models
-  createSTBModel: (projectId: string, data: { name: string; description?: string; chipset?: string }) =>
-    phpApi.post(qs({ rtype: 'stb', action: 'create', pid: projectId }), data),
-
-  updateSTBModel: (modelId: string, data: { name?: string; description?: string; chipset?: string }) =>
-    phpApi.post(qs({ rtype: 'stb', action: 'update', id: modelId }), data),
-
-  deleteSTBModel: (modelId: string) =>
-    phpApi.post(qs({ rtype: 'stb', action: 'delete', id: modelId })),
+  listSTBModels: async (projectId: string) => {
+    const res = await phpAxios.get(qs({ rtype: 'stb', action: 'list', pid: projectId }));
+    return { data: extractPhpData(res) };
+  },
+  createSTBModel: async (projectId: string, data: { name: string; description?: string; chipset?: string }) => {
+    const res = await phpAxios.post(qs({ rtype: 'stb', action: 'create', pid: projectId }), data);
+    return { data: extractPhpData(res) };
+  },
+  updateSTBModel: async (modelId: string, data: { name?: string; description?: string; chipset?: string }) => {
+    const res = await phpAxios.post(qs({ rtype: 'stb', action: 'update', id: modelId }), data);
+    return { data: extractPhpData(res) };
+  },
+  deleteSTBModel: async (modelId: string) => {
+    const res = await phpAxios.post(qs({ rtype: 'stb', action: 'delete', id: modelId }));
+    return { data: extractPhpData(res) };
+  },
 
   // Builds
-  createBuild: (modelId: string, data: { name: string; description?: string; version?: string }) =>
-    phpApi.post(qs({ rtype: 'builds', action: 'create', pid: modelId }), data),
+  listBuilds: async (modelId: string) => {
+    const res = await phpAxios.get(qs({ rtype: 'builds', action: 'list', pid: modelId }));
+    return { data: extractPhpData(res) };
+  },
+  createBuild: async (modelId: string, data: { name: string; description?: string; version?: string }) => {
+    const res = await phpAxios.post(qs({ rtype: 'builds', action: 'create', pid: modelId }), data);
+    return { data: extractPhpData(res) };
+  },
+  updateBuild: async (buildId: string, data: { name?: string; description?: string; version?: string; status?: string }) => {
+    const res = await phpAxios.post(qs({ rtype: 'builds', action: 'update', id: buildId }), data);
+    return { data: extractPhpData(res) };
+  },
+  deleteBuild: async (buildId: string) => {
+    const res = await phpAxios.post(qs({ rtype: 'builds', action: 'delete', id: buildId }));
+    return { data: extractPhpData(res) };
+  },
 
-  updateBuild: (buildId: string, data: { name?: string; description?: string; version?: string; status?: string }) =>
-    phpApi.post(qs({ rtype: 'builds', action: 'update', id: buildId }), data),
-
-  deleteBuild: (buildId: string) =>
-    phpApi.post(qs({ rtype: 'builds', action: 'delete', id: buildId })),
+  // Parser config
+  saveParserConfig: async (buildId: string, data: { parserSessionId?: string; configName: string; nodes: any[]; edges: any[] }) => {
+    const res = await phpAxios.post(qs({ rtype: 'projects', action: 'save_parser_config', id: buildId }), data);
+    return { data: extractPhpData(res) };
+  },
+  loadConfig: async (configId: string) => {
+    const res = await phpAxios.get(qs({ rtype: 'projects', action: 'load_config', id: configId }));
+    return { data: extractPhpData(res) };
+  },
+  listBuildConfigs: async (buildId: string) => {
+    const res = await phpAxios.get(qs({ rtype: 'projects', action: 'list_configs', id: buildId }));
+    return { data: extractPhpData(res) };
+  },
 };
 
 // ===== PARSER API =====
 export const phpParserApi = {
-  seed: (data?: { jsonData?: any; sessionName?: string }) =>
-    phpApi.post(qs({ rtype: 'parser', action: 'seed' }), data || {}),
-
-  listSessions: () => phpApi.get(qs({ rtype: 'parser', action: 'sessions' })),
-
-  getSession: (id: string) => phpApi.get(qs({ rtype: 'parser', action: 'session_get', id })),
-
-  deleteSession: (id: string) =>
-    phpApi.post(qs({ rtype: 'parser', action: 'session_delete', id })),
+  seed: async (data?: { jsonData?: any; sessionName?: string; projectId?: string; buildId?: string; moduleId?: string }) => {
+    const res = await phpAxios.post(qs({ rtype: 'parser', action: 'seed' }), data || {});
+    return { data: extractPhpData(res) };
+  },
+  listSessions: async () => {
+    const res = await phpAxios.get(qs({ rtype: 'parser', action: 'sessions' }));
+    return { data: extractPhpData(res) };
+  },
+  getSession: async (id: string) => {
+    const res = await phpAxios.get(qs({ rtype: 'parser', action: 'session_get', id }));
+    return { data: extractPhpData(res) };
+  },
+  deleteSession: async (id: string) => {
+    const res = await phpAxios.post(qs({ rtype: 'parser', action: 'session_delete', id }));
+    return { data: extractPhpData(res) };
+  },
+  exportCSV: async (id: string, sheet: string) => {
+    const res = await phpAxios.get(qs({ rtype: 'parser', action: 'export', id, sheet }), { responseType: 'blob' });
+    return res;
+  },
 };
 
 // ===== FEATURES API =====
 export const phpFeaturesApi = {
-  list: (params?: { projectId?: string; buildId?: string; module?: string }) =>
-    phpApi.get(qs({ rtype: 'features', action: 'list', ...params })),
+  list: async (params?: { projectId?: string; buildId?: string; module?: string }) => {
+    const res = await phpAxios.get(qs({ rtype: 'features', action: 'list', ...params }));
+    return { data: extractPhpData(res) };
+  },
+  create: async (data: { projectId?: string; buildId?: string; module?: string; name: string; enabled?: boolean; details?: Record<string, any> }) => {
+    const res = await phpAxios.post(qs({ rtype: 'features', action: 'create' }), data);
+    return { data: extractPhpData(res) };
+  },
+  update: async (id: string, data: { name?: string; enabled?: boolean; details?: Record<string, any>; module?: string }) => {
+    const res = await phpAxios.post(qs({ rtype: 'features', action: 'update', id }), data);
+    return { data: extractPhpData(res) };
+  },
+  delete: async (id: string) => {
+    const res = await phpAxios.post(qs({ rtype: 'features', action: 'delete', id }));
+    return { data: extractPhpData(res) };
+  },
+};
 
-  create: (data: { projectId?: string; buildId?: string; module?: string; name: string; enabled?: boolean; details?: Record<string, any> }) =>
-    phpApi.post(qs({ rtype: 'features', action: 'create' }), data),
+// ===== CONFIG API =====
+export const phpConfigApi = {
+  list: async (params?: { status?: string; page?: number; limit?: number }) => {
+    const p: Record<string, string | undefined> = { rtype: 'configurations', action: 'list' };
+    if (params?.status) p.status = params.status;
+    if (params?.page) p.page = String(params.page);
+    if (params?.limit) p.limit = String(params.limit);
+    const res = await phpAxios.get(qs(p));
+    return { data: extractPhpData(res) };
+  },
+  get: async (id: string) => {
+    const res = await phpAxios.get(qs({ rtype: 'configurations', action: 'get', id }));
+    return { data: extractPhpData(res) };
+  },
+  create: async (data: { name: string; description?: string; configData: Record<string, unknown> }) => {
+    const res = await phpAxios.post(qs({ rtype: 'configurations', action: 'create' }), data);
+    return { data: extractPhpData(res) };
+  },
+  update: async (id: string, data: Partial<{ name: string; description: string; configData: Record<string, unknown>; status: string }>) => {
+    const res = await phpAxios.post(qs({ rtype: 'configurations', action: 'update', id }), data);
+    return { data: extractPhpData(res) };
+  },
+  delete: async (id: string) => {
+    const res = await phpAxios.post(qs({ rtype: 'configurations', action: 'delete', id }));
+    return { data: extractPhpData(res) };
+  },
+};
 
-  update: (id: string, data: { name?: string; enabled?: boolean; details?: Record<string, any>; module?: string }) =>
-    phpApi.post(qs({ rtype: 'features', action: 'update', id }), data),
+// ===== CONFIG DATA API =====
+export const phpConfigDataApi = {
+  saveFull: async (id: string, data: { nodes: any[]; edges: any[] }) => {
+    const res = await phpAxios.post(qs({ rtype: 'config_data', action: 'save_full', id }), data);
+    return { data: extractPhpData(res) };
+  },
+  loadFull: async (id: string) => {
+    const res = await phpAxios.get(qs({ rtype: 'config_data', action: 'load_full', id }));
+    return { data: extractPhpData(res) };
+  },
+  createSnapshot: async (id: string, data: { name?: string; description?: string }) => {
+    const res = await phpAxios.post(qs({ rtype: 'config_data', action: 'create_snapshot', id }), data);
+    return { data: extractPhpData(res) };
+  },
+  listSnapshots: async (id: string) => {
+    const res = await phpAxios.get(qs({ rtype: 'config_data', action: 'list_snapshots', id }));
+    return { data: extractPhpData(res) };
+  },
+  restoreSnapshot: async (configId: string, snapshotId: string) => {
+    const res = await phpAxios.post(qs({ rtype: 'config_data', action: 'restore_snapshot', id: configId, sid: snapshotId }));
+    return { data: extractPhpData(res) };
+  },
+};
 
-  delete: (id: string) =>
-    phpApi.post(qs({ rtype: 'features', action: 'delete', id })),
+// ===== USER API =====
+export const phpUserApi = {
+  list: async () => {
+    const res = await phpAxios.get(qs({ rtype: 'users', action: 'list' }));
+    return { data: extractPhpData(res) };
+  },
+  get: async (id: string) => {
+    const res = await phpAxios.get(qs({ rtype: 'users', action: 'get', id }));
+    return { data: extractPhpData(res) };
+  },
+  update: async (id: string, data: { displayName?: string; isActive?: boolean }) => {
+    const res = await phpAxios.post(qs({ rtype: 'users', action: 'update', id }), data);
+    return { data: extractPhpData(res) };
+  },
+  assignRole: async (id: string, roleName: string) => {
+    const res = await phpAxios.post(qs({ rtype: 'users', action: 'assign_role', id }), { roleName });
+    return { data: extractPhpData(res) };
+  },
+  removeRole: async (id: string, roleName: string) => {
+    const res = await phpAxios.post(qs({ rtype: 'users', action: 'remove_role', id }), { roleName });
+    return { data: extractPhpData(res) };
+  },
+  unlock: async (id: string) => {
+    const res = await phpAxios.post(qs({ rtype: 'users', action: 'unlock', id }));
+    return { data: extractPhpData(res) };
+  },
+  devices: async (id: string) => {
+    const res = await phpAxios.get(qs({ rtype: 'users', action: 'devices', id }));
+    return { data: extractPhpData(res) };
+  },
+};
+
+// ===== AUDIT API =====
+export const phpAuditApi = {
+  list: async (params?: { event?: string; severity?: string; page?: number; limit?: number }) => {
+    const p: Record<string, string | undefined> = { rtype: 'audit', action: 'list' };
+    if (params?.event) p.event = params.event;
+    if (params?.severity) p.severity = params.severity;
+    if (params?.page) p.page = String(params.page);
+    if (params?.limit) p.limit = String(params.limit);
+    const res = await phpAxios.get(qs(p));
+    return { data: extractPhpData(res) };
+  },
+  dashboard: async () => {
+    const res = await phpAxios.get(qs({ rtype: 'audit', action: 'dashboard' }));
+    return { data: extractPhpData(res) };
+  },
 };
 
 // ===== HEALTH API =====
 export const phpHealthApi = {
-  check: () => phpApi.get(qs({ rtype: 'health' })),
+  check: async () => {
+    const res = await phpAxios.get(qs({ rtype: 'health' }));
+    return { data: extractPhpData(res) };
+  },
 };
 
-// ===== CSRF API =====
-export const phpCsrfApi = {
-  getToken: () => phpApi.get(qs({ rtype: 'csrf', action: 'token' })),
-  verify: (token: string) => phpApi.post(qs({ rtype: 'csrf', action: 'verify' }), { token }),
-};
-
-export { extractData };
-export default phpApi;
+export default phpAxios;
