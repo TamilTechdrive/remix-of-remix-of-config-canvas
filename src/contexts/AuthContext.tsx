@@ -1,5 +1,8 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { authApi, setAccessToken, getAccessToken } from '../services/api';
+import { setAccessToken, getAccessToken } from '../services/api';
+import { setPhpAccessToken, getPhpAccessToken } from '../services/phpApi';
+import { unifiedAuthApi } from '../services/unifiedApi';
+import { isPhpBackend, isSecurityEnabled } from '../services/apiConfig';
 
 export interface User {
   id: string;
@@ -45,18 +48,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const refreshUser = useCallback(async () => {
     try {
-      const res = await authApi.me();
+      const res = await unifiedAuthApi.me();
+      const d = res.data;
       setUser({
-        id: res.data.id,
-        email: res.data.email,
-        username: res.data.username,
-        displayName: res.data.display_name || res.data.username,
-        roles: res.data.roles || [],
-        permissions: res.data.permissions || [],
+        id: d.id,
+        email: d.email,
+        username: d.username,
+        displayName: d.displayName || d.display_name || d.username,
+        roles: d.roles || [],
+        permissions: d.permissions || [],
       });
     } catch {
       setUser(null);
-      setAccessToken(null);
+      if (isPhpBackend()) setPhpAccessToken(null);
+      else setAccessToken(null);
     }
   }, []);
 
@@ -69,7 +74,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setIsLoading(false);
       return;
     }
-    const token = getAccessToken();
+
+    // If security is disabled, auto-login as local user
+    if (!isSecurityEnabled()) {
+      setUser({
+        id: 'local',
+        email: 'local@user',
+        username: 'local',
+        displayName: 'Local User',
+        roles: ['admin'],
+        permissions: ['config:read', 'config:write', 'config:delete', 'user:manage', 'audit:read'],
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    const token = isPhpBackend() ? getPhpAccessToken() : getAccessToken();
     if (token) {
       refreshUser().finally(() => setIsLoading(false));
     } else {
@@ -78,18 +98,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [refreshUser]);
 
   const login = useCallback(async (email: string, password: string) => {
-    const res = await authApi.login({ email, password });
-    setAccessToken(res.data.accessToken);
-    setUser({
-      id: res.data.user.id,
-      email: res.data.user.email,
-      username: res.data.user.username,
-      displayName: res.data.user.displayName || res.data.user.username,
-      roles: res.data.user.roles || [],
-      permissions: [],
-    });
+    const res = await unifiedAuthApi.login({ email, password });
+    const d = res.data;
+    const token = d.accessToken;
+    if (token && isSecurityEnabled()) {
+      if (isPhpBackend()) setPhpAccessToken(token);
+      else setAccessToken(token);
+    }
+    if (d.user) {
+      setUser({
+        id: d.user.id,
+        email: d.user.email,
+        username: d.user.username,
+        displayName: d.user.displayName || d.user.username,
+        roles: d.user.roles || [],
+        permissions: [],
+      });
+    }
     setIsDemoMode(false);
-    await refreshUser();
+    if (isSecurityEnabled()) {
+      await refreshUser();
+    }
   }, [refreshUser]);
 
   const loginDemo = useCallback(() => {
@@ -99,14 +128,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const register = useCallback(async (email: string, username: string, password: string, displayName?: string) => {
-    await authApi.register({ email, username, password, displayName });
+    await unifiedAuthApi.register({ email, username, password, displayName });
   }, []);
 
   const logout = useCallback(async () => {
     if (!isDemoMode) {
-      try { await authApi.logout(); } catch { /* ignore */ }
+      try { await unifiedAuthApi.logout(); } catch { /* ignore */ }
     }
     setAccessToken(null);
+    setPhpAccessToken(null);
     localStorage.removeItem('cf_demo');
     setUser(null);
     setIsDemoMode(false);
