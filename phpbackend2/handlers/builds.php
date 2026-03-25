@@ -1,11 +1,31 @@
 <?php
 /**
- * Build handlers
+ * Build handlers - with list action
  */
+
+function builds_list($params, $body) {
+    Auth::requireAuth();
+    $modelId = $params['pid'];
+
+    if (!$modelId) $modelId = $params['modelId'];
+    if (!$modelId) Response::error('Model ID required', 400);
+
+    $db = Database::forTable('builds');
+    if ($db['type'] === 'mssql') {
+        $result = Database::odbcQuery("SELECT * FROM builds WHERE stb_model_id = ? ORDER BY created_at", array($modelId));
+        $builds = $result ? Database::odbcFetchAll($result) : array();
+    } else {
+        $result = Database::mysqlQuery("SELECT * FROM builds WHERE stb_model_id = ? ORDER BY created_at", array($modelId));
+        $builds = $result ? Database::mysqlFetchAll($result) : array();
+    }
+
+    Response::success($builds);
+}
 
 function builds_create($params, $body) {
     Auth::requireAuth();
-    $modelId = $params['modelId'];
+    $modelId = $params['pid'];
+    if (!$modelId) $modelId = $params['modelId'];
 
     $name = isset($body['name']) ? Security::sanitize($body['name']) : '';
     $version = isset($body['version']) ? Security::sanitize($body['version']) : 'v1.0.0';
@@ -29,7 +49,7 @@ function builds_create($params, $body) {
         );
     }
 
-    Response::json(array('success' => true, 'id' => $id), 201);
+    Response::success(array('id' => $id), 'Created');
 }
 
 function builds_update($params, $body) {

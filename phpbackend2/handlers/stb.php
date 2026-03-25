@@ -1,11 +1,31 @@
 <?php
 /**
- * STB Model handlers
+ * STB Model handlers - with list action
  */
 
+function stb_models_list($params, $body) {
+    Auth::requireAuth();
+    $projectId = $params['pid'];
+
+    if (!$projectId) Response::error('Project ID required', 400);
+
+    $db = Database::forTable('stb_models');
+    if ($db['type'] === 'mssql') {
+        $result = Database::odbcQuery("SELECT * FROM stb_models WHERE project_id = ? ORDER BY created_at", array($projectId));
+        $models = $result ? Database::odbcFetchAll($result) : array();
+    } else {
+        $result = Database::mysqlQuery("SELECT * FROM stb_models WHERE project_id = ? ORDER BY created_at", array($projectId));
+        $models = $result ? Database::mysqlFetchAll($result) : array();
+    }
+
+    Response::success($models);
+}
+
 function stb_models_create($params, $body) {
-    $user = Auth::requireAuth();
-    $projectId = $params['projectId'];
+    Auth::requireAuth();
+    $projectId = $params['pid'];
+
+    if (!$projectId) $projectId = $params['projectId'];
 
     $name = isset($body['name']) ? Security::sanitize($body['name']) : '';
     $description = isset($body['description']) ? Security::sanitize($body['description']) : '';
@@ -29,7 +49,7 @@ function stb_models_create($params, $body) {
         );
     }
 
-    Response::json(array('success' => true, 'id' => $id), 201);
+    Response::success(array('id' => $id), 'Created');
 }
 
 function stb_models_update($params, $body) {
