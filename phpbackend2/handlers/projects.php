@@ -1,28 +1,29 @@
 <?php
 /**
- * Project handlers - uses MSSQL via ODBC for projects/builds/teams
- * PHP 5.3.10 compatible
+ * Project handlers - with parser config save/load
  */
 
 function projects_list($params, $body) {
     $user = Auth::requireAuth();
 
     $db = Database::forTable('projects');
+    $ownerClause = Auth::isEnabled() ? " WHERE owner_id = ?" : "";
+    $ownerVals = Auth::isEnabled() ? array($user['userId']) : array();
+
     if ($db['type'] === 'mssql') {
         $result = Database::odbcQuery(
-            "SELECT id, name, description, status, owner_id, tags, created_at, updated_at FROM projects WHERE owner_id = ? ORDER BY updated_at DESC",
-            array($user['userId'])
+            "SELECT id, name, description, status, owner_id, tags, created_at, updated_at FROM projects" . $ownerClause . " ORDER BY updated_at DESC",
+            $ownerVals
         );
         $projects = $result ? Database::odbcFetchAll($result) : array();
     } else {
         $result = Database::mysqlQuery(
-            "SELECT id, name, description, status, owner_id, tags, created_at, updated_at FROM projects WHERE owner_id = ? ORDER BY updated_at DESC",
-            array($user['userId'])
+            "SELECT id, name, description, status, owner_id, tags, created_at, updated_at FROM projects" . $ownerClause . " ORDER BY updated_at DESC",
+            $ownerVals
         );
         $projects = $result ? Database::mysqlFetchAll($result) : array();
     }
 
-    // Fetch STB models and builds for each project
     foreach ($projects as &$project) {
         $project['tags'] = json_decode($project['tags'], true);
         if (!$project['tags']) $project['tags'] = array();
@@ -38,10 +39,10 @@ function projects_get($params, $body) {
 
     $db = Database::forTable('projects');
     if ($db['type'] === 'mssql') {
-        $result = Database::odbcQuery("SELECT * FROM projects WHERE id = ? AND owner_id = ?", array($id, $user['userId']));
+        $result = Database::odbcQuery("SELECT * FROM projects WHERE id = ?", array($id));
         $rows = $result ? Database::odbcFetchAll($result) : array();
     } else {
-        $result = Database::mysqlQuery("SELECT * FROM projects WHERE id = ? AND owner_id = ?", array($id, $user['userId']));
+        $result = Database::mysqlQuery("SELECT * FROM projects WHERE id = ?", array($id));
         $rows = $result ? Database::mysqlFetchAll($result) : array();
     }
 
@@ -84,7 +85,7 @@ function projects_create($params, $body) {
         );
     }
 
-    Response::json(array('success' => true, 'id' => $id, 'name' => $name), 201);
+    Response::success(array('id' => $id, 'name' => $name), 'Created');
 }
 
 function projects_update($params, $body) {
@@ -107,9 +108,8 @@ function projects_update($params, $body) {
     $dateFn = $db['type'] === 'mssql' ? 'GETDATE()' : 'NOW()';
     $sets[] = "updated_at = " . $dateFn;
     $vals[] = $id;
-    $vals[] = $user['userId'];
 
-    $sql = "UPDATE projects SET " . implode(', ', $sets) . " WHERE id = ? AND owner_id = ?";
+    $sql = "UPDATE projects SET " . implode(', ', $sets) . " WHERE id = ?";
 
     if ($db['type'] === 'mssql') {
         Database::odbcQuery($sql, $vals);
@@ -126,12 +126,122 @@ function projects_delete($params, $body) {
 
     $db = Database::forTable('projects');
     if ($db['type'] === 'mssql') {
-        Database::odbcQuery("DELETE FROM projects WHERE id = ? AND owner_id = ?", array($id, $user['userId']));
+        Database::odbcQuery("DELETE FROM projects WHERE id = ?", array($id));
     } else {
-        Database::mysqlQuery("DELETE FROM projects WHERE id = ? AND owner_id = ?", array($id, $user['userId']));
+        Database::mysqlQuery("DELETE FROM projects WHERE id = ?", array($id));
     }
 
     Response::success(null, 'Project deleted');
+}
+
+// ===== Parser Config save/load for builds =====
+
+function projects_save_parser_config($params, $body) {
+    Auth::requireAuth();
+    $buildId = $params['id'];
+
+    $configName = isset($body['configName']) ? Security::sanitize($body['configName']) : 'Config ' . date('Y-m-d H:i:s');
+    $parserSessionId = isset($body['parserSessionId']) ? $body['parserSessionId'] : '';
+    $nodes = isset($body['nodes']) ? $body['nodes'] : array();
+    $edges = isset($body['edges']) ? $body['edges'] : array();
+
+    // Create configuration
+    $configId = Database::uuid();
+    Database::mysqlQuery(
+        "INSERT INTO configurations (id, name, description, config_data, status, build_id, parser_session_id, created_at, updated_at) VALUES (?, ?, ?, ?, 'active', ?, ?, NOW(), NOW())",
+        array($configId, $configName, 'From parser', json_encode(array('nodes' => $nodes, 'edges' => $edges)), $buildId, $parserSessionId)
+    );
+
+    // Save nodes and edges
+    foreach ($nodes as $node) {
+        $nodeId = isset($node['id']) ? $node['id'] : Database::uuid();
+        Database::mysqlQuery(
+            "INSERT INTO config_nodes (id, config_id, node_type, label, position_x, position_y, properties, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())",
+            array(
+                $nodeId, $configId,
+                isset($node['type']) ? $node['type'] : 'option',
+                isset($node['data']['label']) ? $node['data']['label'] : '',
+                isset($node['position']['x']) ? $node['position']['x'] : 0,
+                isset($node['position']['y']) ? $node['position']['y'] : 0,
+                json_encode(isset($node['data']) ? $node['data'] : array())
+            )
+        );
+    }
+
+    foreach ($edges as $edge) {
+        $edgeId = isset($edge['id']) ? $edge['id'] : Database::uuid();
+        Database::mysqlQuery(
+            "INSERT INTO config_edges (id, config_id, source_id, target_id, edge_type, label, created_at) VALUES (?, ?, ?, ?, ?, ?, NOW())",
+            array(
+                $edgeId, $configId,
+                isset($edge['source']) ? $edge['source'] : '',
+                isset($edge['target']) ? $edge['target'] : '',
+                isset($edge['type']) ? $edge['type'] : 'default',
+                isset($edge['label']) ? $edge['label'] : ''
+            )
+        );
+    }
+
+    Response::success(array('configId' => $configId));
+}
+
+function projects_load_config($params, $body) {
+    Auth::requireAuth();
+    $configId = $params['id'];
+
+    $result = Database::mysqlQuery("SELECT * FROM configurations WHERE id = ?", array($configId));
+    $rows = Database::mysqlFetchAll($result);
+    if (count($rows) === 0) Response::error('Config not found', 404);
+
+    $config = $rows[0];
+
+    // Load nodes/edges
+    $nodesResult = Database::mysqlQuery("SELECT * FROM config_nodes WHERE config_id = ?", array($configId));
+    $edgesResult = Database::mysqlQuery("SELECT * FROM config_edges WHERE config_id = ?", array($configId));
+
+    $nodes = array();
+    $nodesRaw = $nodesResult ? Database::mysqlFetchAll($nodesResult) : array();
+    foreach ($nodesRaw as $n) {
+        $data = json_decode($n['properties'], true);
+        if (!$data) $data = array();
+        $data['label'] = $n['label'];
+        $nodes[] = array(
+            'id' => $n['id'],
+            'type' => $n['node_type'],
+            'position' => array('x' => floatval($n['position_x']), 'y' => floatval($n['position_y'])),
+            'data' => $data,
+        );
+    }
+
+    $edges = array();
+    $edgesRaw = $edgesResult ? Database::mysqlFetchAll($edgesResult) : array();
+    foreach ($edgesRaw as $e) {
+        $edges[] = array(
+            'id' => $e['id'],
+            'source' => $e['source_id'],
+            'target' => $e['target_id'],
+            'type' => $e['edge_type'],
+        );
+    }
+
+    Response::success(array(
+        'config' => $config,
+        'nodes' => $nodes,
+        'edges' => $edges,
+    ));
+}
+
+function projects_list_configs($params, $body) {
+    Auth::requireAuth();
+    $buildId = $params['id'];
+
+    $result = Database::mysqlQuery(
+        "SELECT id, name, description, status, created_at, updated_at FROM configurations WHERE build_id = ? ORDER BY updated_at DESC",
+        array($buildId)
+    );
+    $configs = $result ? Database::mysqlFetchAll($result) : array();
+
+    Response::success($configs);
 }
 
 // ===== HELPER =====

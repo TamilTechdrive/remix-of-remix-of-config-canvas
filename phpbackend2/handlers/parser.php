@@ -1,6 +1,6 @@
 <?php
 /**
- * Parser session handlers (MySQL)
+ * Parser session handlers (MySQL) - with export
  */
 
 function parser_seed($params, $body) {
@@ -8,13 +8,15 @@ function parser_seed($params, $body) {
 
     $sessionName = isset($body['sessionName']) ? Security::sanitize($body['sessionName']) : 'Import ' . date('Y-m-d H:i:s');
     $jsonData = isset($body['jsonData']) ? $body['jsonData'] : null;
+    $projectId = isset($body['projectId']) ? $body['projectId'] : '';
+    $buildId = isset($body['buildId']) ? $body['buildId'] : '';
+    $moduleId = isset($body['moduleId']) ? $body['moduleId'] : '';
 
     $sessionId = Database::uuid();
 
-    // Insert session
     Database::mysqlQuery(
-        "INSERT INTO parser_sessions (id, user_id, session_name, source_file_name, total_processed_files, total_included_files, total_define_vars, created_at) VALUES (?, ?, ?, ?, 0, 0, 0, NOW())",
-        array($sessionId, $user['userId'], $sessionName, 'uploaded')
+        "INSERT INTO parser_sessions (id, user_id, session_name, source_file_name, total_processed_files, total_included_files, total_define_vars, project_id, build_id, module_id, created_at) VALUES (?, ?, ?, ?, 0, 0, 0, ?, ?, ?, NOW())",
+        array($sessionId, $user['userId'], $sessionName, 'uploaded', $projectId, $buildId, $moduleId)
     );
 
     $processedCount = 0;
@@ -67,7 +69,6 @@ function parser_seed($params, $body) {
                 $varType = isset($varData['1stHitInfo']['VarType']) ? $varData['1stHitInfo']['VarType'] : '';
                 $hitScope = isset($varData['1stHitInfo']['HitSrcScope']) ? $varData['1stHitInfo']['HitSrcScope'] : '';
 
-                // Generate diagnostic
                 $diagLevel = 'info';
                 $diagMsg = '';
                 if ($hitScope === 'COND_IF' || $hitScope === 'COND_ELSE') {
@@ -145,7 +146,6 @@ function parser_seed($params, $body) {
         }
     }
 
-    // Update counts
     Database::mysqlQuery(
         "UPDATE parser_sessions SET total_processed_files = ?, total_included_files = ?, total_define_vars = ? WHERE id = ?",
         array($processedCount, $includedCount, $defineCount, $sessionId)
@@ -165,7 +165,7 @@ function parser_sessions_list($params, $body) {
     $user = Auth::requireAuth();
 
     $result = Database::mysqlQuery(
-        "SELECT id, session_name, source_file_name, total_processed_files, total_included_files, total_define_vars, created_at FROM parser_sessions WHERE user_id = ? ORDER BY created_at DESC",
+        "SELECT id, session_name, source_file_name, total_processed_files, total_included_files, total_define_vars, project_id, build_id, module_id, created_at FROM parser_sessions WHERE user_id = ? ORDER BY created_at DESC",
         array($user['userId'])
     );
 
@@ -177,7 +177,6 @@ function parser_sessions_get($params, $body) {
     Auth::requireAuth();
     $id = $params['id'];
 
-    // Session
     $result = Database::mysqlQuery("SELECT * FROM parser_sessions WHERE id = ?", array($id));
     $rows = Database::mysqlFetchAll($result);
     if (count($rows) === 0) Response::error('Session not found', 404);
@@ -241,10 +240,59 @@ function parser_sessions_delete($params, $body) {
     Response::success(null, 'Session deleted');
 }
 
+function parser_export($params, $body) {
+    Auth::requireAuth();
+    $id = $params['id'];
+    $sheet = $params['sheet'];
+
+    // Get session data
+    $result = Database::mysqlQuery("SELECT * FROM parser_sessions WHERE id = ?", array($id));
+    $rows = Database::mysqlFetchAll($result);
+    if (count($rows) === 0) Response::error('Session not found', 404);
+
+    // Build CSV based on sheet type
+    $csv = '';
+
+    if ($sheet === 'processed_files' || $sheet === 'processedFiles') {
+        $pf = Database::mysqlQuery("SELECT * FROM parser_processed_files WHERE session_id = ?", array($id));
+        $files = $pf ? Database::mysqlFetchAll($pf) : array();
+
+        $csv = "File Name,Full Path,Type,Lines,COND_IF,COND_ELSE,COND_ENDIF,Nest Blocks,Define Hits,Macro Hits,Module\n";
+        foreach ($files as $f) {
+            $csv .= '"' . $f['file_name'] . '","' . $f['file_name_full'] . '","' . $f['file_type'] . '",'
+                . $f['input_line_count'] . ',' . $f['cond_if'] . ',' . $f['cond_else'] . ','
+                . $f['cond_endif'] . ',' . $f['cond_nest_block'] . ',' . $f['def_hit_count'] . ','
+                . $f['macro_hit_count'] . ',"' . $f['source_module'] . "\"\n";
+        }
+    } elseif ($sheet === 'define_vars' || $sheet === 'defineVars') {
+        $dv = Database::mysqlQuery("SELECT * FROM parser_define_vars WHERE session_id = ?", array($id));
+        $vars = $dv ? Database::mysqlFetchAll($dv) : array();
+
+        $csv = "Variable,Type,Scope,Source File,Line,Module,Diagnostic\n";
+        foreach ($vars as $v) {
+            $csv .= '"' . $v['var_name'] . '","' . $v['first_hit_var_type'] . '","' . $v['first_hit_src_scope'] . '","'
+                . $v['source_file_name'] . '",' . $v['source_line_number'] . ',"' . $v['source_module'] . '","'
+                . $v['diagnostic_message'] . "\"\n";
+        }
+    } else {
+        $inf = Database::mysqlQuery("SELECT * FROM parser_included_files WHERE session_id = ?", array($id));
+        $files = $inf ? Database::mysqlFetchAll($inf) : array();
+
+        $csv = "Include File,Source Ref,Module\n";
+        foreach ($files as $f) {
+            $csv .= '"' . $f['include_file_name'] . '","' . $f['source_line_ref'] . '","' . $f['source_module'] . "\"\n";
+        }
+    }
+
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename="export_' . $sheet . '.csv"');
+    echo $csv;
+    exit;
+}
+
 // ===== HELPERS =====
 
 function _extractModule($path) {
-    // Extract module from path like Samples\eDBE\src\file.c
     $path = str_replace('\\', '/', $path);
     if (preg_match('/Samples\/([^\/]+)/', $path, $matches)) {
         return $matches[1];
@@ -256,7 +304,6 @@ function _extractModule($path) {
 }
 
 function _parseSLNR($slnr) {
-    // Parse "Samples\eDBE\src\ndbfcm.c:#127"
     $slnr = str_replace('\\', '/', $slnr);
     $parts = explode(':#', $slnr);
     $filePath = isset($parts[0]) ? $parts[0] : '';
