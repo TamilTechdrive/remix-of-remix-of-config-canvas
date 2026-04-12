@@ -1,0 +1,4359 @@
+{
+   "ProcessedFiles" : {
+      "2" : [
+         {
+            "FileType": 2,
+            "FName": "sampleoptions.opt",
+            "FNameFull": "../Samples/Simple/sampleoptions.opt",
+            "StartTS": 1775899964.741163,
+            "EndTS": 1775899964.744253,
+            "TimeDelta": 0.00308990478515625,
+            "InpLC": 48,
+            "UsedLC": 48,
+            "EmpLC": 13,
+            "MultLC": 0,
+            "MaxLL": 175,
+            "MinLL": 5,
+            "MaxLNR": "../Samples/Simple/sampleoptions.opt:#47",
+            "MinLNR": "../Samples/Simple/sampleoptions.opt:#25",
+            "CondIf": 2,
+            "CondElif": 1,
+            "CondElse": 2,
+            "CondEndif": 2,
+            "CondNestBlk": 0,
+            "AssignDir": 0,
+            "AssignRHS": 0,
+            "CompOptDef": 0,
+            "CompOptInc": 0
+         }
+      ],
+      "4" : [
+         {
+            "FileType": 4,
+            "FName": "SampleCHdr.h",
+            "FNameFull": "../Samples/Simple/SampleCHdr.h",
+            "StartTS": 1775899964.744297,
+            "EndTS": 1775899964.7509162,
+            "TimeDelta": 0.00661921501159668,
+            "InpLC": 172,
+            "UsedLC": 172,
+            "EmpCmtLC": 27,
+            "MultLC": 6,
+            "MaxLL": 167,
+            "MinLL": 3,
+            "MaxLNR": "../Samples/Simple/SampleCHdr.h:#80",
+            "MinLNR": "../Samples/Simple/SampleCHdr.h:#3",
+            "CondIf": 14,
+            "CondElse": 3,
+            "CondElif": 1,
+            "CondEndif": 14,
+            "CondNestBlk": 2,
+            "DefVarCnt": 0,
+            "DefHitCnt": 15,
+            "UndefHitCnt": 5,
+            "CtlDefHitCnt": 13,
+            "MacroHitCnt": 5
+         }
+      ]
+   },
+   "MOFP.IncFiles" : [
+   ],
+   "ToolsetVars" : {
+      "CFLAGS" : {
+         "SrcLineNoRef": "../Samples/Simple/sampleoptions.opt:#1",
+         "SWOpt" : {
+            "I" : {
+               "/mnt/temp" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#1"
+                  ]
+               ],
+               "/mnt/Project/Modules/include" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#38"
+                  ]
+               ],
+               "/mnt/Project/include" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#38"
+                  ]
+               ]
+            },
+            "D" : {
+               "BROWSER_RTE" : [
+                  [
+                     "INTERNAL",
+                     "ENABLED",
+                     "../Samples/Simple/sampleoptions.opt:#5"
+                  ],
+                  [
+                     "INTERNAL",
+                     "ENABLED",
+                     "../Samples/Simple/sampleoptions.opt:#15"
+                  ],
+                  [
+                     "INTERNAL",
+                     "ENABLED",
+                     "../Samples/Simple/sampleoptions.opt:#24"
+                  ]
+               ],
+               "BROWSER_ENGINE" : [
+                  [
+                     "INTERNAL",
+                     "WEBKIT",
+                     "../Samples/Simple/sampleoptions.opt:#5"
+                  ],
+                  [
+                     "INTERNAL",
+                     "CHROMIUM",
+                     "../Samples/Simple/sampleoptions.opt:#24"
+                  ]
+               ],
+               "BROWSER_REVISION" : [
+                  [
+                     "INTERNAL",
+                     "WEBKIT_REVISION",
+                     "../Samples/Simple/sampleoptions.opt:#15"
+                  ],
+                  [
+                     "INTERNAL",
+                     "CHROMIUM_REVISION",
+                     "../Samples/Simple/sampleoptions.opt:#24"
+                  ]
+               ],
+               "ONE_KB_SIZE_IN_BYTES" : [
+                  [
+                     "INTERNAL",
+                     "1024",
+                     "../Samples/Simple/sampleoptions.opt:#29"
+                  ]
+               ],
+               "ONE_MB_SIZE_IN_BYTES=(ONE_KB_SIZE_IN_BYTES" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#29"
+                  ]
+               ],
+               "DVD_TOOLSET" : [
+                  [
+                     "INTERNAL",
+                     "TOOLSET",
+                     "../Samples/Simple/sampleoptions.opt:#30"
+                  ],
+                  [
+                     "INTERNAL",
+                     "TOOLSET",
+                     "../Samples/Simple/sampleoptions.opt:#39"
+                  ]
+               ],
+               "eDRV_ENABLE_DEBUG_PRINT" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#33"
+                  ]
+               ],
+               "eDRV_DEBUG_IF" : [
+                  [
+                     "INTERNAL",
+                     "NONE",
+                     "../Samples/Simple/sampleoptions.opt:#39"
+                  ]
+               ],
+               "CAIRO_VERSION" : [
+                  [
+                     "INTERNAL",
+                     "1.10",
+                     "../Samples/Simple/sampleoptions.opt:#40"
+                  ]
+               ]
+            },
+            "O" : {
+               "2" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#30"
+                  ]
+               ]
+            },
+            "EL" : {
+               "NOV" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#44"
+                  ],
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#45"
+                  ]
+               ]
+            },
+            "g" : {
+               "NOV" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#44"
+                  ],
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#45"
+                  ],
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#45"
+                  ]
+               ]
+            },
+            "m" : {
+               "xgot" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#44"
+                  ]
+               ],
+               "long-calls" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#44"
+                  ]
+               ]
+            },
+            "MMD" : {
+               "NOV" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#44"
+                  ]
+               ]
+            },
+            "MP" : {
+               "NOV" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#44"
+                  ]
+               ]
+            },
+            "MF" : {
+               "NOV" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#44"
+                  ]
+               ]
+            },
+            "l" : {
+               "stdc++" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#44"
+                  ]
+               ]
+            },
+            "f" : {
+               "function-sections" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#45"
+                  ]
+               ],
+               "data-sections" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#45"
+                  ]
+               ],
+               "unwind-tables" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#45"
+                  ]
+               ],
+               "stack-protector-all" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#45"
+                  ]
+               ]
+            },
+            "Wl," : {
+               "--gc-sections" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#45"
+                  ]
+               ]
+            },
+            "r" : {
+               "dynamic" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#45"
+                  ]
+               ]
+            },
+            "W" : {
+               "all" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#46"
+                  ]
+               ],
+               "extra" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#46"
+                  ]
+               ],
+               "format" : [
+                  [
+                     "INTERNAL",
+                     "2",
+                     "../Samples/Simple/sampleoptions.opt:#46"
+                  ]
+               ],
+               "strict-aliasing=2" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#46"
+                  ]
+               ],
+               "strict-prototypes" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#46"
+                  ]
+               ],
+               "missing-prototypes" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#46"
+                  ]
+               ],
+               "shadow" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#46"
+                  ]
+               ],
+               "write-strings" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#46"
+                  ]
+               ],
+               "conversion" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#46"
+                  ]
+               ],
+               "float-equal" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#46"
+                  ]
+               ],
+               "pointer-arith" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#47"
+                  ]
+               ],
+               "cast-qual" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#47"
+                  ]
+               ],
+               "inline" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#47"
+                  ]
+               ],
+               "undef" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#47"
+                  ]
+               ],
+               "unreachable-code" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#47"
+                  ]
+               ],
+               "redundant-decls" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#47"
+                  ]
+               ],
+               "aggregate-return" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#47"
+                  ]
+               ],
+               "no-unused-result" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#47"
+                  ]
+               ],
+               "no-unused-parameter" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#47"
+                  ]
+               ],
+               "no-error=conversion" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#47"
+                  ]
+               ],
+               "no-error=int-to-pointer-cast" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#48"
+                  ]
+               ],
+               "no-error=pointer-to-int-cast" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#48"
+                  ]
+               ],
+               "no-error=missing-braces" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#48"
+                  ]
+               ],
+               "no-error=sign-conversion" : [
+                  [
+                     "INTERNAL",
+                     "",
+                     "../Samples/Simple/sampleoptions.opt:#48"
+                  ]
+               ]
+            }
+         }
+      }
+   },
+   "CSHFP.IncFiles" : [
+      {
+         "IncFName": "stdio.h",
+         "SrcLineRef": "../Samples/Simple/SampleCHdr.h:#114"
+      }
+   ],
+   "EnvVars" : {
+      "BROWSER_ENGINE" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-COND",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-REF",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#4",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#5",
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+               }
+            },
+            {
+               "HitSrc": "SRC-MOFP-COND",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-REF",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#16",
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "else ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+               }
+            },
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#24",
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "else ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+               }
+            },
+            {
+               "HitSrc": "SRC-MOFP-ASGN",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#26",
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "else",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#25"
+               }
+            }
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+            "WEBKIT_BASELINE_74228",
+            "WEBKIT_BASELINE_117454",
+            "WEBKIT_BASELINE_153112",
+            "WEBKIT_BASELINE_156830",
+            "WEBKIT_BASELINE_218831",
+            "WEBKIT_REVISION",
+            "BROWSER_REVISION"
+         ],
+         "ChList" : [
+            "BROWSER_RTE",
+            "ENABLED",
+            "WEBKIT_BASELINE_74228",
+            "WEBKIT_BASELINE_117454",
+            "WEBKIT_BASELINE_153112",
+            "WEBKIT_BASELINE_156830",
+            "WEBKIT_BASELINE_218831",
+            "WEBKIT_REVISION",
+            "BROWSER_REVISION",
+            "CHROMIUM_BASELINE_12345",
+            "CHROMIUM_BASELINE_24670",
+            "CHROMIUM_BASELINE_32126",
+            "CHROMIUM_REVISION"
+         ],
+         "RefList" : [
+            "WEBKIT",
+            "CHROMIUM"
+         ],
+         "ValEntries" : {
+            "WEBKIT" : [
+               [
+                  "SRC-MOFP-CSW",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#5"
+               ]
+            ],
+            "CHROMIUM" : [
+               [
+                  "SRC-MOFP-CSW",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#24"
+               ]
+            ],
+            "NONE" : [
+               [
+                  "SRC-MOFP-ASGN",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#26"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#26"
+      },
+      "WEBKIT" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-COND",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#4",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#5",
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+               }
+            }
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+            "WEBKIT_BASELINE_74228",
+            "WEBKIT_BASELINE_117454",
+            "WEBKIT_BASELINE_153112",
+            "WEBKIT_BASELINE_156830",
+            "WEBKIT_BASELINE_218831",
+            "WEBKIT_REVISION",
+            "BROWSER_REVISION"
+         ],
+         "ChList" : [
+            "BROWSER_RTE",
+            "ENABLED",
+            "WEBKIT_BASELINE_74228",
+            "WEBKIT_BASELINE_117454",
+            "WEBKIT_BASELINE_153112",
+            "WEBKIT_BASELINE_156830",
+            "WEBKIT_BASELINE_218831",
+            "WEBKIT_REVISION",
+            "BROWSER_REVISION"
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#5"
+      },
+      "BROWSER_RTE" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#5",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#15",
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+               }
+            },
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#24",
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "else ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+               }
+            }
+         ],
+         "ParList" : [
+            "BROWSER_ENGINE",
+            "WEBKIT"
+         ],
+         "SibList" : [
+            "ENABLED",
+            "WEBKIT_BASELINE_74228",
+            "WEBKIT_BASELINE_117454",
+            "WEBKIT_BASELINE_153112",
+            "WEBKIT_BASELINE_156830",
+            "WEBKIT_BASELINE_218831",
+            "WEBKIT_REVISION",
+            "BROWSER_REVISION"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "ENABLED" : [
+               [
+                  "SRC-MOFP-CSW",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#5"
+               ],
+               [
+                  "SRC-MOFP-CSW",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#15"
+               ],
+               [
+                  "SRC-MOFP-CSW",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#24"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#24"
+      },
+      "ENABLED" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#5",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#15",
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+               }
+            },
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#24",
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "else ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+               }
+            },
+            {
+               "HitSrc": "SRC-MOFP-COND",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#32",
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#32"
+               }
+            }
+         ],
+         "ParList" : [
+            "BROWSER_ENGINE",
+            "WEBKIT"
+         ],
+         "SibList" : [
+            "BROWSER_RTE",
+            "WEBKIT_BASELINE_74228",
+            "WEBKIT_BASELINE_117454",
+            "WEBKIT_BASELINE_153112",
+            "WEBKIT_BASELINE_156830",
+            "WEBKIT_BASELINE_218831",
+            "WEBKIT_REVISION",
+            "BROWSER_REVISION"
+         ],
+         "ChList" : [
+            "CFLAGS"
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#32"
+      },
+      "WEBKIT_BASELINE_74228" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-ASGN",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#7",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "BROWSER_ENGINE",
+            "WEBKIT"
+         ],
+         "SibList" : [
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "WEBKIT",
+            "WEBKIT_BASELINE_117454",
+            "WEBKIT_BASELINE_153112",
+            "WEBKIT_BASELINE_156830",
+            "WEBKIT_BASELINE_218831",
+            "WEBKIT_REVISION",
+            "BROWSER_REVISION"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "74228" : [
+               [
+                  "SRC-MOFP-ASGN",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#7"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#7"
+      },
+      "WEBKIT_BASELINE_117454" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-ASGN",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#8",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-ASGN",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#13",
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+               }
+            }
+         ],
+         "ParList" : [
+            "BROWSER_ENGINE",
+            "WEBKIT"
+         ],
+         "SibList" : [
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "WEBKIT",
+            "WEBKIT_BASELINE_74228",
+            "WEBKIT_BASELINE_153112",
+            "WEBKIT_BASELINE_156830",
+            "WEBKIT_BASELINE_218831",
+            "WEBKIT_REVISION",
+            "BROWSER_REVISION"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "117454" : [
+               [
+                  "SRC-MOFP-ASGN",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#8"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#13"
+      },
+      "WEBKIT_BASELINE_153112" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-ASGN",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#9",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "BROWSER_ENGINE",
+            "WEBKIT"
+         ],
+         "SibList" : [
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "WEBKIT",
+            "WEBKIT_BASELINE_74228",
+            "WEBKIT_BASELINE_117454",
+            "WEBKIT_BASELINE_156830",
+            "WEBKIT_BASELINE_218831",
+            "WEBKIT_REVISION",
+            "BROWSER_REVISION"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "153112" : [
+               [
+                  "SRC-MOFP-ASGN",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#9"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#9"
+      },
+      "WEBKIT_BASELINE_156830" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-ASGN",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#10",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "BROWSER_ENGINE",
+            "WEBKIT"
+         ],
+         "SibList" : [
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "WEBKIT",
+            "WEBKIT_BASELINE_74228",
+            "WEBKIT_BASELINE_117454",
+            "WEBKIT_BASELINE_153112",
+            "WEBKIT_BASELINE_218831",
+            "WEBKIT_REVISION",
+            "BROWSER_REVISION"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "156830" : [
+               [
+                  "SRC-MOFP-ASGN",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#10"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#10"
+      },
+      "WEBKIT_BASELINE_218831" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-ASGN",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#11",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "BROWSER_ENGINE",
+            "WEBKIT"
+         ],
+         "SibList" : [
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "WEBKIT",
+            "WEBKIT_BASELINE_74228",
+            "WEBKIT_BASELINE_117454",
+            "WEBKIT_BASELINE_153112",
+            "WEBKIT_BASELINE_156830",
+            "WEBKIT_REVISION",
+            "BROWSER_REVISION"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "218831" : [
+               [
+                  "SRC-MOFP-ASGN",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#11"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#11"
+      },
+      "WEBKIT_REVISION" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-ASGN",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#13",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-REF",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#15",
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+               }
+            }
+         ],
+         "ParList" : [
+            "BROWSER_ENGINE",
+            "WEBKIT"
+         ],
+         "SibList" : [
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "WEBKIT",
+            "WEBKIT_BASELINE_74228",
+            "WEBKIT_BASELINE_117454",
+            "WEBKIT_BASELINE_153112",
+            "WEBKIT_BASELINE_156830",
+            "WEBKIT_BASELINE_218831",
+            "BROWSER_REVISION"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "$(WEBKIT_BASELINE_117454)" : [
+               [
+                  "SRC-MOFP-ASGN",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#13"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#15"
+      },
+      "BROWSER_REVISION" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#15",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#24",
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "else ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+               }
+            }
+         ],
+         "ParList" : [
+            "BROWSER_ENGINE",
+            "WEBKIT"
+         ],
+         "SibList" : [
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "WEBKIT",
+            "WEBKIT_BASELINE_74228",
+            "WEBKIT_BASELINE_117454",
+            "WEBKIT_BASELINE_153112",
+            "WEBKIT_BASELINE_156830",
+            "WEBKIT_BASELINE_218831",
+            "WEBKIT_REVISION"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "WEBKIT_REVISION" : [
+               [
+                  "SRC-MOFP-CSW",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-REF",
+                  "../Samples/Simple/sampleoptions.opt:#15"
+               ]
+            ],
+            "CHROMIUM_REVISION" : [
+               [
+                  "SRC-MOFP-CSW",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-REF",
+                  "../Samples/Simple/sampleoptions.opt:#24"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#24"
+      },
+      "CHROMIUM" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-COND",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#16",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "else ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#24",
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "else ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+               }
+            }
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+            "CHROMIUM_BASELINE_12345",
+            "CHROMIUM_BASELINE_24670",
+            "CHROMIUM_BASELINE_32126",
+            "CHROMIUM_REVISION"
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#24"
+      },
+      "CHROMIUM_BASELINE_12345" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-ASGN",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#18",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "else ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "BROWSER_ENGINE",
+            "CHROMIUM"
+         ],
+         "SibList" : [
+            "CHROMIUM_BASELINE_24670",
+            "CHROMIUM_BASELINE_32126",
+            "CHROMIUM_REVISION",
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "CHROMIUM",
+            "BROWSER_REVISION"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "12345" : [
+               [
+                  "SRC-MOFP-ASGN",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#18"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#18"
+      },
+      "CHROMIUM_BASELINE_24670" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-ASGN",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#19",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "else ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "BROWSER_ENGINE",
+            "CHROMIUM"
+         ],
+         "SibList" : [
+            "CHROMIUM_BASELINE_12345",
+            "CHROMIUM_BASELINE_32126",
+            "CHROMIUM_REVISION",
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "CHROMIUM",
+            "BROWSER_REVISION"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "24670" : [
+               [
+                  "SRC-MOFP-ASGN",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#19"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#19"
+      },
+      "CHROMIUM_BASELINE_32126" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-ASGN",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#20",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "else ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-ASGN",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#22",
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "else ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+               }
+            }
+         ],
+         "ParList" : [
+            "BROWSER_ENGINE",
+            "CHROMIUM"
+         ],
+         "SibList" : [
+            "CHROMIUM_BASELINE_12345",
+            "CHROMIUM_BASELINE_24670",
+            "CHROMIUM_REVISION",
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "CHROMIUM",
+            "BROWSER_REVISION"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "32126" : [
+               [
+                  "SRC-MOFP-ASGN",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#20"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#22"
+      },
+      "CHROMIUM_REVISION" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-ASGN",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#22",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "else ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-REF",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#24",
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "else ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+               }
+            }
+         ],
+         "ParList" : [
+            "BROWSER_ENGINE",
+            "CHROMIUM"
+         ],
+         "SibList" : [
+            "CHROMIUM_BASELINE_12345",
+            "CHROMIUM_BASELINE_24670",
+            "CHROMIUM_BASELINE_32126",
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "CHROMIUM",
+            "BROWSER_REVISION"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "$(CHROMIUM_BASELINE_32126)" : [
+               [
+                  "SRC-MOFP-ASGN",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#22"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#24"
+      },
+      "ONE_KB_SIZE_IN_BYTES" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#29"
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "1024" : [
+               [
+                  "SRC-MOFP-CSW",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-ABS",
+                  "../Samples/Simple/sampleoptions.opt:#29"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#29"
+      },
+      "DVD_TOOLSET" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#30"
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#39"
+            },
+            {
+               "HitSrc": "SRC-MOFP-ASGN",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#42"
+            }
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "TOOLSET" : [
+               [
+                  "SRC-MOFP-CSW",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-REF",
+                  "../Samples/Simple/sampleoptions.opt:#30"
+               ],
+               [
+                  "SRC-MOFP-CSW",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-REF",
+                  "../Samples/Simple/sampleoptions.opt:#39"
+               ]
+            ],
+            "ST20_DCU_TOOLSET_v5.4" : [
+               [
+                  "SRC-MOFP-ASGN",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#42"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#42"
+      },
+      "TOOLSET" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-REF",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#30"
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-REF",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#39"
+            }
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#39"
+      },
+      "DEBUG_CTRL" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-COND",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-REF",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#32",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#32"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+            "CFLAGS"
+         ],
+         "RefList" : [
+            "ENABLED"
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#32"
+      },
+      "CFLAGS" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-REF",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#33",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#32"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-REF",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#39"
+            }
+         ],
+         "ParList" : [
+            "DEBUG_CTRL",
+            "ENABLED"
+         ],
+         "SibList" : [
+            "eDRV_ENABLE_DEBUG_PRINT"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#39"
+      },
+      "DEBUG_IF" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-ASGN",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#35",
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "else",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#34"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "NONE" : [
+               [
+                  "SRC-MOFP-ASGN",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#35"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#35"
+      },
+      "eDRV_DEBUG_IF" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#39"
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "NONE" : [
+               [
+                  "SRC-MOFP-CSW",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-DIR",
+                  "../Samples/Simple/sampleoptions.opt:#39"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#39"
+      },
+      "NONE" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#39"
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#39"
+      },
+      "CAIRO_VERSION" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#40"
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "1.10" : [
+               [
+                  "SRC-MOFP-CSW",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-LHS",
+                  "PROP-ABS",
+                  "../Samples/Simple/sampleoptions.opt:#40"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#40"
+      }
+   },
+   "DefineVars" : {
+      "BROWSER_RTE" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#5",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#15",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+               }
+            },
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#24",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "else ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+               }
+            },
+            {
+               "HitSrc": "SRC-CSHFP-COND",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#170",
+               "HitFlags": 786624,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "if",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#170"
+               }
+            }
+         ],
+         "ParList" : [
+            "BROWSER_RTE"
+         ],
+         "SibList" : [
+            "ENABLED",
+            "BROWSER_RTE_ACTIVATED"
+         ],
+         "ChList" : [
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_RTE_ACTIVATED"
+         ],
+         "RefList" : [
+            "ENABLED",
+            "if"
+         ],
+         "ValEntries" : {
+         },
+         "EnvParList" : [
+            "BROWSER_ENGINE",
+            "WEBKIT",
+            "CHROMIUM"
+         ],
+         "EnvSibList" : [
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "WEBKIT",
+            "WEBKIT_BASELINE_74228",
+            "WEBKIT_BASELINE_117454",
+            "WEBKIT_BASELINE_153112",
+            "WEBKIT_BASELINE_156830",
+            "WEBKIT_BASELINE_218831",
+            "WEBKIT_REVISION",
+            "BROWSER_REVISION",
+            "CHROMIUM_BASELINE_12345",
+            "CHROMIUM_BASELINE_24670",
+            "CHROMIUM_BASELINE_32126",
+            "CHROMIUM_REVISION",
+            "CHROMIUM"
+         ],
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#170"
+      },
+      "ENABLED" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#5",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#15",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+               }
+            },
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#24",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "else ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+               }
+            },
+            {
+               "HitSrc": "SRC-CSHFP-COND",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#170",
+               "HitFlags": 786624,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "if",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#170"
+               }
+            }
+         ],
+         "ParList" : [
+            "BROWSER_RTE",
+            "ENABLED"
+         ],
+         "SibList" : [
+            "BROWSER_RTE",
+            "BROWSER_RTE_ACTIVATED"
+         ],
+         "ChList" : [
+            "ENABLED",
+            "BROWSER_RTE_ACTIVATED"
+         ],
+         "RefList" : [
+            "if"
+         ],
+         "ValEntries" : {
+         },
+         "EnvParList" : [
+            "BROWSER_ENGINE",
+            "WEBKIT",
+            "CHROMIUM"
+         ],
+         "EnvSibList" : [
+            "BROWSER_RTE",
+            "BROWSER_ENGINE",
+            "WEBKIT",
+            "WEBKIT_BASELINE_74228",
+            "WEBKIT_BASELINE_117454",
+            "WEBKIT_BASELINE_153112",
+            "WEBKIT_BASELINE_156830",
+            "WEBKIT_BASELINE_218831",
+            "WEBKIT_REVISION",
+            "BROWSER_REVISION",
+            "CHROMIUM_BASELINE_12345",
+            "CHROMIUM_BASELINE_24670",
+            "CHROMIUM_BASELINE_32126",
+            "CHROMIUM_REVISION",
+            "CHROMIUM"
+         ],
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#170"
+      },
+      "BROWSER_ENGINE" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#5",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#24",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "else ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+               }
+            }
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "WEBKIT",
+            "CHROMIUM"
+         ],
+         "ValEntries" : {
+         },
+         "EnvParList" : [
+            "BROWSER_ENGINE",
+            "WEBKIT",
+            "CHROMIUM"
+         ],
+         "EnvSibList" : [
+            "BROWSER_RTE",
+            "ENABLED",
+            "WEBKIT",
+            "BROWSER_REVISION",
+            "WEBKIT_REVISION",
+            "CHROMIUM_BASELINE_12345",
+            "CHROMIUM_BASELINE_24670",
+            "CHROMIUM_BASELINE_32126",
+            "CHROMIUM_REVISION",
+            "CHROMIUM"
+         ],
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#24"
+      },
+      "WEBKIT" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#5",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "EnvParList" : [
+            "BROWSER_ENGINE",
+            "WEBKIT"
+         ],
+         "EnvSibList" : [
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "BROWSER_REVISION",
+            "WEBKIT_REVISION"
+         ],
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#5"
+      },
+      "BROWSER_REVISION" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#15",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#24",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "else ifeq",
+                  "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+               }
+            }
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "WEBKIT_REVISION",
+            "CHROMIUM_REVISION"
+         ],
+         "ValEntries" : {
+         },
+         "EnvParList" : [
+            "BROWSER_ENGINE",
+            "WEBKIT",
+            "CHROMIUM"
+         ],
+         "EnvSibList" : [
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "WEBKIT",
+            "WEBKIT_BASELINE_74228",
+            "WEBKIT_BASELINE_117454",
+            "WEBKIT_BASELINE_153112",
+            "WEBKIT_BASELINE_156830",
+            "WEBKIT_BASELINE_218831",
+            "WEBKIT_REVISION",
+            "CHROMIUM_BASELINE_12345",
+            "CHROMIUM_BASELINE_24670",
+            "CHROMIUM_BASELINE_32126",
+            "CHROMIUM_REVISION",
+            "CHROMIUM"
+         ],
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#24"
+      },
+      "WEBKIT_REVISION" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-REF",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#15",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#4"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "EnvParList" : [
+            "BROWSER_ENGINE",
+            "WEBKIT"
+         ],
+         "EnvSibList" : [
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "WEBKIT",
+            "WEBKIT_BASELINE_74228",
+            "WEBKIT_BASELINE_117454",
+            "WEBKIT_BASELINE_153112",
+            "WEBKIT_BASELINE_156830",
+            "WEBKIT_BASELINE_218831",
+            "BROWSER_REVISION"
+         ],
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#15"
+      },
+      "CHROMIUM" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#24",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "else ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "EnvParList" : [
+            "BROWSER_ENGINE",
+            "CHROMIUM"
+         ],
+         "EnvSibList" : [
+            "CHROMIUM_BASELINE_12345",
+            "CHROMIUM_BASELINE_24670",
+            "CHROMIUM_BASELINE_32126",
+            "CHROMIUM_REVISION",
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "BROWSER_REVISION"
+         ],
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#24"
+      },
+      "CHROMIUM_REVISION" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-REF",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#24",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "else ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#16"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "EnvParList" : [
+            "BROWSER_ENGINE",
+            "CHROMIUM"
+         ],
+         "EnvSibList" : [
+            "CHROMIUM_BASELINE_12345",
+            "CHROMIUM_BASELINE_24670",
+            "CHROMIUM_BASELINE_32126",
+            "BROWSER_RTE",
+            "ENABLED",
+            "BROWSER_ENGINE",
+            "CHROMIUM",
+            "BROWSER_REVISION"
+         ],
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#24"
+      },
+      "ONE_KB_SIZE_IN_BYTES" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#29",
+            "HitFlags": 0
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "1024" : [
+               [
+                  "SRC-MOFP-CSW",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "PROP-ABS",
+                  "../Samples/Simple/sampleoptions.opt:#29"
+               ]
+            ]
+         },
+         "EnvParList" : [
+         ],
+         "EnvSibList" : [
+         ],
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#29"
+      },
+      "DVD_TOOLSET" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#30",
+            "HitFlags": 0
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#39",
+               "HitFlags": 0
+            }
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "TOOLSET"
+         ],
+         "ValEntries" : {
+         },
+         "EnvParList" : [
+         ],
+         "EnvSibList" : [
+         ],
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#39"
+      },
+      "TOOLSET" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-REF",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#30",
+            "HitFlags": 0
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-MOFP-CSW",
+               "VarType": "TYP-MOFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-REF",
+               "HitSLNR": "../Samples/Simple/sampleoptions.opt:#39",
+               "HitFlags": 0
+            }
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "EnvParList" : [
+         ],
+         "EnvSibList" : [
+         ],
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#39"
+      },
+      "eDRV_ENABLE_DEBUG_PRINT" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_CTL",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#33",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifeq",
+               "CondSLNR": "../Samples/Simple/sampleoptions.opt:#32"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "EnvParList" : [
+            "DEBUG_CTRL",
+            "ENABLED"
+         ],
+         "EnvSibList" : [
+            "CFLAGS"
+         ],
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#33"
+      },
+      "eDRV_DEBUG_IF" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#39",
+            "HitFlags": 0
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "NONE"
+         ],
+         "ValEntries" : {
+         },
+         "EnvParList" : [
+         ],
+         "EnvSibList" : [
+         ],
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#39"
+      },
+      "NONE" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#39",
+            "HitFlags": 0
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "EnvParList" : [
+         ],
+         "EnvSibList" : [
+         ],
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#39"
+      },
+      "CAIRO_VERSION" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-MOFP-CSW",
+            "VarType": "TYP-MOFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/sampleoptions.opt:#40",
+            "HitFlags": 0
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "1.10" : [
+               [
+                  "SRC-MOFP-CSW",
+                  "TYP-MOFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "PROP-ABS",
+                  "../Samples/Simple/sampleoptions.opt:#40"
+               ]
+            ]
+         },
+         "EnvParList" : [
+         ],
+         "EnvSibList" : [
+         ],
+         "LastHitSLNR": "../Samples/Simple/sampleoptions.opt:#40"
+      },
+      "eDBE_ENABLE_DEBUG_TRACES" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-UNDEFINE",
+            "VarType": "TYP-CSHFP_CTL",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-NONE",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#1",
+            "HitFlags": 0
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#1"
+      },
+      "eAPPL_TARGET_APPLICATION_DTM_MH_S4R" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_CTL",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#41",
+            "HitFlags": 0
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-COND",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#48",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifdef",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#48"
+               }
+            }
+         ],
+         "ParList" : [
+            "eAPPL_TARGET_APPLICATION_DTM_MH_S4R"
+         ],
+         "SibList" : [
+            "INTEGRATE_FREESAT_CONFORMANCE"
+         ],
+         "ChList" : [
+            "eAPPL_TARGET_APPLICATION_DTM_MH_S4R",
+            "INTEGRATE_FREESAT_CONFORMANCE"
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#48"
+      },
+      "MEM_BLOCK_SIZE_1KB_IN_BYTES" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#43",
+            "HitFlags": 0
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#44",
+               "HitFlags": 802816
+            }
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "MEM_BLOCK_SIZE_1MB_IN_BYTES"
+         ],
+         "ValEntries" : {
+            "1024" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#43"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#44"
+      },
+      "MEM_BLOCK_SIZE_1MB_IN_BYTES" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#44",
+            "HitFlags": 0
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "(MEM_BLOCK_SIZE_1KB_IN_BYTES * MEM_BLOCK_SIZE_1KB_IN_BYTES)" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#44"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#44"
+      },
+      "CONV_SECS_TO_MSECS" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_MACRO",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#46",
+            "HitFlags": 0
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "( __secs__ * 1000 )" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_MACRO",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#46"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#46"
+      },
+      "INTEGRATE_FREESAT_CONFORMANCE" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_CTL",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#49",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#48"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-COND",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#52",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifdef",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#52"
+               }
+            },
+            {
+               "HitSrc": "SRC-CSHFP-COND",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#65",
+               "HitFlags": 786432,
+               "CondOrd" : {
+                  "OrdDepth": 2,
+                  "CondDir": "if",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#65"
+               }
+            }
+         ],
+         "ParList" : [
+            "eAPPL_TARGET_APPLICATION_DTM_MH_S4R",
+            "INTEGRATE_FREESAT_CONFORMANCE"
+         ],
+         "SibList" : [
+            "eAPPL_TARGET_APPLICATION_DTM_MH_S4R",
+            "eDBE_SUPPORT_DUMMY_LCN_ASSIGNMENT_FOR_NON_LCN_SERVICES",
+            "eDBE_FREESAT_DUMMY_LCN_RANGE_START",
+            "eDBE_FREESAT_DUMMY_LCN_RANGE_END",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_START",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_END"
+         ],
+         "ChList" : [
+            "INTEGRATE_FREESAT_CONFORMANCE",
+            "eDBE_SUPPORT_DUMMY_LCN_ASSIGNMENT_FOR_NON_LCN_SERVICES",
+            "eDBE_FREESAT_DUMMY_LCN_RANGE_START",
+            "eDBE_FREESAT_DUMMY_LCN_RANGE_END",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_START",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_END"
+         ],
+         "RefList" : [
+            "if"
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#65"
+      },
+      "eDBE_SUPPORT_DUMMY_LCN_ASSIGNMENT_FOR_NON_LCN_SERVICES" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_CTL",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#53",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#52"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_CTL",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-ABS",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#59",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifdef",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#58"
+               }
+            },
+            {
+               "HitSrc": "SRC-CSHFP-COND",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#64",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifdef",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#64"
+               }
+            }
+         ],
+         "ParList" : [
+            "INTEGRATE_FREESAT_CONFORMANCE",
+            "INTEGRATE_NORDIC_CONFORMANCE",
+            "eDBE_SUPPORT_DUMMY_LCN_ASSIGNMENT_FOR_NON_LCN_SERVICES"
+         ],
+         "SibList" : [
+            "INTEGRATE_FREESAT_CONFORMANCE",
+            "eDBE_FREESAT_DUMMY_LCN_RANGE_START",
+            "eDBE_FREESAT_DUMMY_LCN_RANGE_END",
+            "INTEGRATE_NORDIC_CONFORMANCE",
+            "eDBE_NORDIC_DUMMY_LCN_RANGE_START",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_SIZE",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_END",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_START"
+         ],
+         "ChList" : [
+            "eDBE_SUPPORT_DUMMY_LCN_ASSIGNMENT_FOR_NON_LCN_SERVICES",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_SIZE",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_END",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_START"
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#64"
+      },
+      "eDBE_FREESAT_DUMMY_LCN_RANGE_START" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#54",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#52"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#67",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 2,
+                  "CondDir": "if",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#65"
+               }
+            }
+         ],
+         "ParList" : [
+            "INTEGRATE_FREESAT_CONFORMANCE"
+         ],
+         "SibList" : [
+            "INTEGRATE_FREESAT_CONFORMANCE",
+            "eDBE_SUPPORT_DUMMY_LCN_ASSIGNMENT_FOR_NON_LCN_SERVICES",
+            "eDBE_FREESAT_DUMMY_LCN_RANGE_END",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_START",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_END"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_START"
+         ],
+         "ValEntries" : {
+            "900" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#54"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#67"
+      },
+      "eDBE_FREESAT_DUMMY_LCN_RANGE_END" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#55",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#52"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#68",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 2,
+                  "CondDir": "if",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#65"
+               }
+            }
+         ],
+         "ParList" : [
+            "INTEGRATE_FREESAT_CONFORMANCE"
+         ],
+         "SibList" : [
+            "INTEGRATE_FREESAT_CONFORMANCE",
+            "eDBE_SUPPORT_DUMMY_LCN_ASSIGNMENT_FOR_NON_LCN_SERVICES",
+            "eDBE_FREESAT_DUMMY_LCN_RANGE_START",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_START",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_END"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_END"
+         ],
+         "ValEntries" : {
+            "1000" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#55"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#68"
+      },
+      "INTEGRATE_NORDIC_CONFORMANCE" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-COND",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#58",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#58"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-COND",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#69",
+               "HitFlags": 786432,
+               "CondOrd" : {
+                  "OrdDepth": 2,
+                  "CondDir": "elif",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#69"
+               }
+            }
+         ],
+         "ParList" : [
+            "INTEGRATE_NORDIC_CONFORMANCE"
+         ],
+         "SibList" : [
+            "eDBE_SUPPORT_DUMMY_LCN_ASSIGNMENT_FOR_NON_LCN_SERVICES",
+            "eDBE_NORDIC_DUMMY_LCN_RANGE_START",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_START",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_END",
+            "eDBE_NORDIC_DUMMY_LCN_RANGE_END"
+         ],
+         "ChList" : [
+            "INTEGRATE_NORDIC_CONFORMANCE",
+            "eDBE_SUPPORT_DUMMY_LCN_ASSIGNMENT_FOR_NON_LCN_SERVICES",
+            "eDBE_NORDIC_DUMMY_LCN_RANGE_START",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_START",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_END",
+            "eDBE_NORDIC_DUMMY_LCN_RANGE_END"
+         ],
+         "RefList" : [
+            "elif"
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#69"
+      },
+      "eDBE_NORDIC_DUMMY_LCN_RANGE_START" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#60",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#58"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-ABS",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#61",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifdef",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#58"
+               }
+            },
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#71",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 2,
+                  "CondDir": "elif",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#69"
+               }
+            }
+         ],
+         "ParList" : [
+            "INTEGRATE_NORDIC_CONFORMANCE"
+         ],
+         "SibList" : [
+            "INTEGRATE_NORDIC_CONFORMANCE",
+            "eDBE_SUPPORT_DUMMY_LCN_ASSIGNMENT_FOR_NON_LCN_SERVICES",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_START",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_END",
+            "eDBE_NORDIC_DUMMY_LCN_RANGE_END"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_START"
+         ],
+         "ValEntries" : {
+            "9000" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#60"
+               ]
+            ],
+            "10000" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#61"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#71"
+      },
+      "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_START" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#67",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 2,
+               "CondDir": "if",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#65"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-ABS",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#71",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 2,
+                  "CondDir": "elif",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#69"
+               }
+            },
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-ABS",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#75",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 2,
+                  "CondDir": "else",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#73"
+               }
+            },
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#80",
+               "HitFlags": 794624,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifdef",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#64"
+               }
+            }
+         ],
+         "ParList" : [
+            "INTEGRATE_FREESAT_CONFORMANCE",
+            "INTEGRATE_NORDIC_CONFORMANCE",
+            "eDBE_SUPPORT_DUMMY_LCN_ASSIGNMENT_FOR_NON_LCN_SERVICES"
+         ],
+         "SibList" : [
+            "INTEGRATE_FREESAT_CONFORMANCE",
+            "eDBE_FREESAT_DUMMY_LCN_RANGE_START",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_END",
+            "eDBE_FREESAT_DUMMY_LCN_RANGE_END",
+            "INTEGRATE_NORDIC_CONFORMANCE",
+            "eDBE_NORDIC_DUMMY_LCN_RANGE_START",
+            "eDBE_NORDIC_DUMMY_LCN_RANGE_END",
+            "eDBE_SUPPORT_DUMMY_LCN_ASSIGNMENT_FOR_NON_LCN_SERVICES",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_SIZE"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_SIZE"
+         ],
+         "ValEntries" : {
+            "eDBE_FREESAT_DUMMY_LCN_RANGE_START" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#67"
+               ]
+            ],
+            "eDBE_NORDIC_DUMMY_LCN_RANGE_START" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#71"
+               ]
+            ],
+            "9000" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#75"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#80"
+      },
+      "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_END" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#68",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 2,
+               "CondDir": "if",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#65"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-ABS",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#72",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 2,
+                  "CondDir": "elif",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#69"
+               }
+            },
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-ABS",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#76",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 2,
+                  "CondDir": "else",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#73"
+               }
+            },
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#80",
+               "HitFlags": 794624,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifdef",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#64"
+               }
+            }
+         ],
+         "ParList" : [
+            "INTEGRATE_FREESAT_CONFORMANCE",
+            "INTEGRATE_NORDIC_CONFORMANCE",
+            "eDBE_SUPPORT_DUMMY_LCN_ASSIGNMENT_FOR_NON_LCN_SERVICES"
+         ],
+         "SibList" : [
+            "INTEGRATE_FREESAT_CONFORMANCE",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_START",
+            "eDBE_FREESAT_DUMMY_LCN_RANGE_START",
+            "eDBE_FREESAT_DUMMY_LCN_RANGE_END",
+            "INTEGRATE_NORDIC_CONFORMANCE",
+            "eDBE_NORDIC_DUMMY_LCN_RANGE_START",
+            "eDBE_NORDIC_DUMMY_LCN_RANGE_END",
+            "eDBE_SUPPORT_DUMMY_LCN_ASSIGNMENT_FOR_NON_LCN_SERVICES",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_SIZE"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_SIZE"
+         ],
+         "ValEntries" : {
+            "eDBE_FREESAT_DUMMY_LCN_RANGE_END" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#68"
+               ]
+            ],
+            "eDBE_NORDIC_DUMMY_LCN_RANGE_END" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#72"
+               ]
+            ],
+            "10000" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#76"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#80"
+      },
+      "eDBE_NORDIC_DUMMY_LCN_RANGE_END" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#72",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 2,
+               "CondDir": "elif",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#69"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "INTEGRATE_NORDIC_CONFORMANCE"
+         ],
+         "SibList" : [
+            "INTEGRATE_NORDIC_CONFORMANCE",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_START",
+            "eDBE_NORDIC_DUMMY_LCN_RANGE_START",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_END"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_END"
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#72"
+      },
+      "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_SIZE" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#80",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#64"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "eDBE_SUPPORT_DUMMY_LCN_ASSIGNMENT_FOR_NON_LCN_SERVICES"
+         ],
+         "SibList" : [
+            "eDBE_SUPPORT_DUMMY_LCN_ASSIGNMENT_FOR_NON_LCN_SERVICES",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_END",
+            "eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_START"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "( eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_END - eDBE_DUMMY_LCN_FOR_NON_LCN_SERVICES_RANGE_START )" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#80"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#80"
+      },
+      "eDBE_DIVERSITY_FORCE_DUMMY_LCN_ASSIGNMENT_FROM_HIGHEST_BROACAST_LCN_VALUE" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-COND",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#83",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 2,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#83"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "eDBE_DIVERSITY_FORCE_DUMMY_LCN_ASSIGNMENT_FROM_HIGHEST_BROACAST_LCN_VALUE"
+         ],
+         "SibList" : [
+            "eDBE_ENABLE_DUMMY_LCN_ASSIGNMENT_FROM_HIGHEST_BROACAST_LCN_VALUE"
+         ],
+         "ChList" : [
+            "eDBE_DIVERSITY_FORCE_DUMMY_LCN_ASSIGNMENT_FROM_HIGHEST_BROACAST_LCN_VALUE",
+            "eDBE_ENABLE_DUMMY_LCN_ASSIGNMENT_FROM_HIGHEST_BROACAST_LCN_VALUE"
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#83"
+      },
+      "eDBE_ENABLE_DUMMY_LCN_ASSIGNMENT_FROM_HIGHEST_BROACAST_LCN_VALUE" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_CTL",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#84",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 2,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#83"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "eDBE_DIVERSITY_FORCE_DUMMY_LCN_ASSIGNMENT_FROM_HIGHEST_BROACAST_LCN_VALUE"
+         ],
+         "SibList" : [
+            "eDBE_DIVERSITY_FORCE_DUMMY_LCN_ASSIGNMENT_FROM_HIGHEST_BROACAST_LCN_VALUE"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#84"
+      },
+      "DEPRECATED_DEFINE_STATIC_LOCAL" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-COND",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#89",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifndef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#89"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_MACRO",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-ABS",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#90~91",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifndef",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#89"
+               }
+            }
+         ],
+         "ParList" : [
+            "DEPRECATED_DEFINE_STATIC_LOCAL"
+         ],
+         "SibList" : [
+            "static"
+         ],
+         "ChList" : [
+            "DEPRECATED_DEFINE_STATIC_LOCAL",
+            "static"
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "static type& name = *new type arguments" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_MACRO",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#90~91"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#90~91"
+      },
+      "static" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_MACRO",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#90~91",
+            "HitFlags": 134234114,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifndef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#89"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "DEPRECATED_DEFINE_STATIC_LOCAL"
+         ],
+         "SibList" : [
+            "DEPRECATED_DEFINE_STATIC_LOCAL"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "DEPRECATED_DEFINE_STATIC_LOCAL"
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#90~91"
+      },
+      "eDEMOD_SUPPORT_API_ACCESS_SYNC" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-COND",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#94",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#94"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "eDEMOD_SUPPORT_API_ACCESS_SYNC"
+         ],
+         "SibList" : [
+            "eDEMOD_LOCK_API_ACCESS",
+            "eKERNEL_SemaphoreLock",
+            "semDemodAPIAccessMutex",
+            "eDEMOD_RELEASE_API_ACCESS",
+            "eKERNEL_SemaphoreRelease"
+         ],
+         "ChList" : [
+            "eDEMOD_SUPPORT_API_ACCESS_SYNC",
+            "eDEMOD_LOCK_API_ACCESS",
+            "eKERNEL_SemaphoreLock",
+            "semDemodAPIAccessMutex",
+            "eDEMOD_RELEASE_API_ACCESS",
+            "eKERNEL_SemaphoreRelease"
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#94"
+      },
+      "eDEMOD_LOCK_API_ACCESS" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#95~99",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#94"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_CTL",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-ABS",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#107",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "else",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#106"
+               }
+            }
+         ],
+         "ParList" : [
+            "eDEMOD_SUPPORT_API_ACCESS_SYNC"
+         ],
+         "SibList" : [
+            "eDEMOD_SUPPORT_API_ACCESS_SYNC",
+            "eKERNEL_SemaphoreLock",
+            "semDemodAPIAccessMutex",
+            "eDEMOD_RELEASE_API_ACCESS",
+            "eKERNEL_SemaphoreRelease"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "{  eKERNEL_SemaphoreLock ( &semDemodAPIAccessMutex ); }" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#95~99"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#107"
+      },
+      "eKERNEL_SemaphoreLock" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#95~99",
+            "HitFlags": 8126466,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#94"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "eDEMOD_SUPPORT_API_ACCESS_SYNC"
+         ],
+         "SibList" : [
+            "eDEMOD_SUPPORT_API_ACCESS_SYNC",
+            "eDEMOD_LOCK_API_ACCESS",
+            "semDemodAPIAccessMutex",
+            "eDEMOD_RELEASE_API_ACCESS",
+            "eKERNEL_SemaphoreRelease"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "eDEMOD_LOCK_API_ACCESS"
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#95~99"
+      },
+      "semDemodAPIAccessMutex" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#95~99",
+            "HitFlags": 8126466,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#94"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#101~105",
+               "HitFlags": 8126466,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "ifdef",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#94"
+               }
+            }
+         ],
+         "ParList" : [
+            "eDEMOD_SUPPORT_API_ACCESS_SYNC"
+         ],
+         "SibList" : [
+            "eDEMOD_SUPPORT_API_ACCESS_SYNC",
+            "eDEMOD_LOCK_API_ACCESS",
+            "eKERNEL_SemaphoreLock",
+            "eDEMOD_RELEASE_API_ACCESS",
+            "eKERNEL_SemaphoreRelease"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "eDEMOD_LOCK_API_ACCESS",
+            "eDEMOD_RELEASE_API_ACCESS"
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#101~105"
+      },
+      "eDEMOD_RELEASE_API_ACCESS" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#101~105",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#94"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_CTL",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-ABS",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#108",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "else",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#106"
+               }
+            }
+         ],
+         "ParList" : [
+            "eDEMOD_SUPPORT_API_ACCESS_SYNC"
+         ],
+         "SibList" : [
+            "eDEMOD_SUPPORT_API_ACCESS_SYNC",
+            "eDEMOD_LOCK_API_ACCESS",
+            "eKERNEL_SemaphoreLock",
+            "semDemodAPIAccessMutex",
+            "eKERNEL_SemaphoreRelease"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "{  eKERNEL_SemaphoreRelease ( &semDemodAPIAccessMutex ); }" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_DEF",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#101~105"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#108"
+      },
+      "eKERNEL_SemaphoreRelease" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#101~105",
+            "HitFlags": 8126466,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#94"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "eDEMOD_SUPPORT_API_ACCESS_SYNC"
+         ],
+         "SibList" : [
+            "eDEMOD_SUPPORT_API_ACCESS_SYNC",
+            "eDEMOD_LOCK_API_ACCESS",
+            "eKERNEL_SemaphoreLock",
+            "semDemodAPIAccessMutex",
+            "eDEMOD_RELEASE_API_ACCESS"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "eDEMOD_RELEASE_API_ACCESS"
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#101~105"
+      },
+      "ENABLE_EI_EGOS_REPORT_PRINTS" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-COND",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#124~125",
+            "HitFlags": 786496,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "if",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#124~125"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-COND",
+               "VarType": "TYP-CSHFP_DEF",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#136",
+               "HitFlags": 786496,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "if",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#136"
+               }
+            }
+         ],
+         "ParList" : [
+            "ENABLE_EI_EGOS_REPORT_PRINTS"
+         ],
+         "SibList" : [
+            "eDRV_USE_PRINTF_AS_DEBUG_CONSOLE",
+            "eDRV_USE_EGOS_REPORT_AS_DEBUG_CONSOLE"
+         ],
+         "ChList" : [
+            "ENABLE_EI_EGOS_REPORT_PRINTS",
+            "eDRV_USE_PRINTF_AS_DEBUG_CONSOLE",
+            "eDRV_USE_EGOS_REPORT_AS_DEBUG_CONSOLE"
+         ],
+         "RefList" : [
+            "if"
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#136"
+      },
+      "eDRV_USE_PRINTF_AS_DEBUG_CONSOLE" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-UNDEFINE",
+            "VarType": "TYP-CSHFP_CTL",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-NONE",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#126",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "if",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#124~125"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-STMT-UNDEFINE",
+               "VarType": "TYP-CSHFP_CTL",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-NONE",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#137",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "if",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#136"
+               }
+            },
+            {
+               "HitSrc": "SRC-CSHFP-STMT-UNDEFINE",
+               "VarType": "TYP-CSHFP_CTL",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-NONE",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#160",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "if",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#159"
+               }
+            }
+         ],
+         "ParList" : [
+            "ENABLE_EI_EGOS_REPORT_PRINTS",
+            "ENABLE_EI_PRINTS"
+         ],
+         "SibList" : [
+            "ENABLE_EI_EGOS_REPORT_PRINTS",
+            "eDRV_USE_EGOS_REPORT_AS_DEBUG_CONSOLE",
+            "ENABLE_EI_PRINTS"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#160"
+      },
+      "eDRV_USE_EGOS_REPORT_AS_DEBUG_CONSOLE" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_CTL",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#127",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "if",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#124~125"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_CTL",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-ABS",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#138",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "if",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#136"
+               }
+            },
+            {
+               "HitSrc": "SRC-CSHFP-STMT-UNDEFINE",
+               "VarType": "TYP-CSHFP_CTL",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-NONE",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#161",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "if",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#159"
+               }
+            }
+         ],
+         "ParList" : [
+            "ENABLE_EI_EGOS_REPORT_PRINTS",
+            "ENABLE_EI_PRINTS"
+         ],
+         "SibList" : [
+            "ENABLE_EI_EGOS_REPORT_PRINTS",
+            "eDRV_USE_PRINTF_AS_DEBUG_CONSOLE",
+            "ENABLE_EI_PRINTS"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#161"
+      },
+      "eINTR_H5B_WK_32BITS_TYPE_CAST_REQUIRED" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-COND",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#142",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#142"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "eINTR_H5B_WK_32BITS_TYPE_CAST_REQUIRED"
+         ],
+         "SibList" : [
+            "UINT32_TYPECAST"
+         ],
+         "ChList" : [
+            "eINTR_H5B_WK_32BITS_TYPE_CAST_REQUIRED",
+            "UINT32_TYPECAST"
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#142"
+      },
+      "UINT32_TYPECAST" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_MACRO",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#143",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "ifdef",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#142"
+            }
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_CTL",
+               "VarScope": "SCP-MOFP-LHS",
+               "ValProp": "PROP-ABS",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#145",
+               "HitFlags": 0,
+               "CondOrd" : {
+                  "OrdDepth": 1,
+                  "CondDir": "else",
+                  "CondSLNR": "../Samples/Simple/SampleCHdr.h:#144"
+               }
+            }
+         ],
+         "ParList" : [
+            "eINTR_H5B_WK_32BITS_TYPE_CAST_REQUIRED"
+         ],
+         "SibList" : [
+            "eINTR_H5B_WK_32BITS_TYPE_CAST_REQUIRED"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#145"
+      },
+      "eDRV_GET_SPEC_PTHREAD_NAME" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_MACRO",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#152~153",
+            "HitFlags": 0
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "( ( 0 != pthread_getname_np(_HNDE_, _PT_NAME_, sizeof( _PT_NAME_ ) ) ) ? EMT : _PT_NAME_ )" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_MACRO",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#152~153"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#152~153"
+      },
+      "pthread_getname_np" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_MACRO",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#152~153",
+            "HitFlags": 193724432
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_MACRO",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#155~156",
+               "HitFlags": 193724432
+            }
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "eDRV_GET_SPEC_PTHREAD_NAME",
+            "eDRV_GET_CUR_PTHREAD_NAME"
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#155~156"
+      },
+      "EMT" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_MACRO",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#152~153",
+            "HitFlags": 193724432
+         },
+         "AllHitInfo" : [
+            {
+               "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+               "VarType": "TYP-CSHFP_MACRO",
+               "VarScope": "SCP-MOFP-RHS",
+               "ValProp": "PROP-DIR",
+               "HitSLNR": "../Samples/Simple/SampleCHdr.h:#155~156",
+               "HitFlags": 193724432
+            }
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "eDRV_GET_SPEC_PTHREAD_NAME",
+            "eDRV_GET_CUR_PTHREAD_NAME"
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#155~156"
+      },
+      "eDRV_GET_CUR_PTHREAD_NAME" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_MACRO",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#155~156",
+            "HitFlags": 0
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+            "( ( 0 != pthread_getname_np( pthread_self(), _PT_NAME_, sizeof( _PT_NAME_ ) ) ) ? EMT : _PT_NAME_ )" : [
+               [
+                  "SRC-CSHFP-STMT-DEFINE",
+                  "TYP-CSHFP_MACRO",
+                  "SCP-MOFP-RHS",
+                  "DEF-OR-MACRO",
+                  "../Samples/Simple/SampleCHdr.h:#155~156"
+               ]
+            ]
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#155~156"
+      },
+      "pthread_self" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_MACRO",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#155~156",
+            "HitFlags": 193724432
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+         ],
+         "SibList" : [
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+            "eDRV_GET_CUR_PTHREAD_NAME"
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#155~156"
+      },
+      "ENABLE_EI_PRINTS" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-COND",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#159",
+            "HitFlags": 786544,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "if",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#159"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "ENABLE_EI_PRINTS"
+         ],
+         "SibList" : [
+            "eDRV_USE_PRINTF_AS_DEBUG_CONSOLE",
+            "eDRV_USE_EGOS_REPORT_AS_DEBUG_CONSOLE"
+         ],
+         "ChList" : [
+            "ENABLE_EI_PRINTS",
+            "eDRV_USE_PRINTF_AS_DEBUG_CONSOLE",
+            "eDRV_USE_EGOS_REPORT_AS_DEBUG_CONSOLE"
+         ],
+         "RefList" : [
+            "if"
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#159"
+      },
+      "BUILD_EDBE_MODULE_DEBUG_LIBRARY" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-COND",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#164",
+            "HitFlags": 786464,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "if",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#164"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "BUILD_EDBE_MODULE_DEBUG_LIBRARY"
+         ],
+         "SibList" : [
+            "INTEGRATE_EDBE_DEBUG_MODULE_LIBRARY",
+            "ENABLE_DBASE_DEBUG_PRINTS_SUPPORT",
+            "INTEGRATE_MODULE_INIT_MEASUREMENT_SUPPORT"
+         ],
+         "ChList" : [
+            "BUILD_EDBE_MODULE_DEBUG_LIBRARY",
+            "INTEGRATE_EDBE_DEBUG_MODULE_LIBRARY",
+            "ENABLE_DBASE_DEBUG_PRINTS_SUPPORT",
+            "INTEGRATE_MODULE_INIT_MEASUREMENT_SUPPORT"
+         ],
+         "RefList" : [
+            "if"
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#164"
+      },
+      "INTEGRATE_EDBE_DEBUG_MODULE_LIBRARY" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-COND",
+            "VarType": "TYP-CSHFP_DEF",
+            "VarScope": "SCP-MOFP-RHS",
+            "ValProp": "PROP-DIR",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#164",
+            "HitFlags": 786464,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "if",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#164"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "BUILD_EDBE_MODULE_DEBUG_LIBRARY",
+            "INTEGRATE_EDBE_DEBUG_MODULE_LIBRARY"
+         ],
+         "SibList" : [
+            "BUILD_EDBE_MODULE_DEBUG_LIBRARY",
+            "ENABLE_DBASE_DEBUG_PRINTS_SUPPORT",
+            "INTEGRATE_MODULE_INIT_MEASUREMENT_SUPPORT"
+         ],
+         "ChList" : [
+            "INTEGRATE_EDBE_DEBUG_MODULE_LIBRARY",
+            "ENABLE_DBASE_DEBUG_PRINTS_SUPPORT",
+            "INTEGRATE_MODULE_INIT_MEASUREMENT_SUPPORT"
+         ],
+         "RefList" : [
+            "if"
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#164"
+      },
+      "ENABLE_DBASE_DEBUG_PRINTS_SUPPORT" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_CTL",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#165",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "if",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#164"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "BUILD_EDBE_MODULE_DEBUG_LIBRARY",
+            "INTEGRATE_EDBE_DEBUG_MODULE_LIBRARY"
+         ],
+         "SibList" : [
+            "BUILD_EDBE_MODULE_DEBUG_LIBRARY",
+            "INTEGRATE_EDBE_DEBUG_MODULE_LIBRARY",
+            "INTEGRATE_MODULE_INIT_MEASUREMENT_SUPPORT"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#165"
+      },
+      "INTEGRATE_MODULE_INIT_MEASUREMENT_SUPPORT" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_CTL",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#166",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "if",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#164"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "BUILD_EDBE_MODULE_DEBUG_LIBRARY",
+            "INTEGRATE_EDBE_DEBUG_MODULE_LIBRARY"
+         ],
+         "SibList" : [
+            "BUILD_EDBE_MODULE_DEBUG_LIBRARY",
+            "INTEGRATE_EDBE_DEBUG_MODULE_LIBRARY",
+            "ENABLE_DBASE_DEBUG_PRINTS_SUPPORT"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#166"
+      },
+      "BROWSER_RTE_ACTIVATED" : {
+         "1stHitInfo" : {
+            "HitSrc": "SRC-CSHFP-STMT-DEFINE",
+            "VarType": "TYP-CSHFP_CTL",
+            "VarScope": "SCP-MOFP-LHS",
+            "ValProp": "PROP-ABS",
+            "HitSLNR": "../Samples/Simple/SampleCHdr.h:#171",
+            "HitFlags": 0,
+            "CondOrd" : {
+               "OrdDepth": 1,
+               "CondDir": "if",
+               "CondSLNR": "../Samples/Simple/SampleCHdr.h:#170"
+            }
+         },
+         "AllHitInfo" : [
+         ],
+         "ParList" : [
+            "BROWSER_RTE",
+            "ENABLED"
+         ],
+         "SibList" : [
+            "BROWSER_RTE",
+            "ENABLED"
+         ],
+         "ChList" : [
+         ],
+         "RefList" : [
+         ],
+         "ValEntries" : {
+         },
+         "LastHitSLNR": "../Samples/Simple/SampleCHdr.h:#171"
+      }
+   }
+}
