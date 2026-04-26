@@ -450,7 +450,82 @@ export default function ParserData() {
         </CardContent>
       </Card>
 
+      {/* Python Heavy Ingestion (multi-GB JSON) */}
+      <Card className="border-primary/30">
+        <CardHeader>
+          <div className="flex items-start justify-between gap-3 flex-wrap">
+            <div>
+              <CardTitle className="text-lg flex items-center gap-2">
+                <Wrench className="h-5 w-5" /> Python Heavy Ingestion
+                <Badge variant="outline" className="ml-1 text-[10px]">11 GB+ JSON</Badge>
+              </CardTitle>
+              <CardDescription>
+                Stream-parse huge parser outputs server-side via the FastAPI service in <code>pyparser/</code>.
+                Resolves Toolset ↔ Define ↔ Env relationships and stores to DB + Parquet shards.
+              </CardDescription>
+            </div>
+            <div className="flex items-center gap-2">
+              <Label htmlFor="py-toggle" className="text-xs">Enabled</Label>
+              <Switch id="py-toggle" checked={pyEnabled} onCheckedChange={togglePython} />
+            </div>
+          </div>
+        </CardHeader>
+        {pyEnabled && (
+          <CardContent className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="space-y-1">
+                <Label className="text-xs text-muted-foreground">Python service URL</Label>
+                <Input value={pyUrl} onChange={(e) => savePyUrl(e.target.value)} placeholder="http://localhost:8800" />
+              </div>
+              <div className="space-y-1">
+                <Label className="text-xs text-muted-foreground">Server-side JSON path (no upload)</Label>
+                <Input value={pyFilePath} onChange={(e) => setPyFilePath(e.target.value)} placeholder="/data/parser_output.json" />
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Button onClick={startPythonJob} disabled={pyJob?.state === 'running' || pyJob?.state === 'queued'}>
+                <Database className="h-4 w-4 mr-2" />
+                Start Python Parse Job
+              </Button>
+              {pyJob && (pyJob.state === 'running' || pyJob.state === 'queued') && (
+                <Button variant="outline" onClick={cancelPythonJob}><Trash2 className="h-4 w-4 mr-2" />Cancel</Button>
+              )}
+              <Button variant="ghost" size="sm" onClick={() => pythonApi.health().then(h => toast.success(`pyparser ok (${h.service})`)).catch(() => toast.error('pyparser unreachable'))}>
+                <RefreshCw className="h-4 w-4 mr-2" /> Health
+              </Button>
+            </div>
+
+            {(pyJob || pyProgress) && (
+              <div className="p-3 rounded-lg bg-muted/40 border space-y-2">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-medium">
+                    Job <code className="text-primary">{pyJob?.jobId}</code> — stage:{' '}
+                    <Badge variant="outline">{pyProgress?.stage || pyJob?.stage || '—'}</Badge>
+                  </span>
+                  <span className="text-muted-foreground">
+                    {(((pyProgress?.progress ?? pyJob?.progress ?? 0) * 100) | 0)}%
+                    {pyProgress?.bytesTotal
+                      ? ` · ${(pyProgress.bytesRead! / 1e9).toFixed(2)} / ${(pyProgress.bytesTotal / 1e9).toFixed(2)} GB`
+                      : ''}
+                  </span>
+                </div>
+                <Progress value={((pyProgress?.progress ?? pyJob?.progress ?? 0) * 100)} className="h-2" />
+                {((pyProgress?.rows && Object.keys(pyProgress.rows).length > 0) || (pyJob?.rows && Object.keys(pyJob.rows).length > 0)) && (
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {Object.entries(pyProgress?.rows || pyJob?.rows || {}).map(([k, v]) => (
+                      <Badge key={k} variant="outline" className="text-[10px]">{k}: {v.toLocaleString()}</Badge>
+                    ))}
+                  </div>
+                )}
+                {pyJob?.error && <p className="text-xs text-destructive">{pyJob.error}</p>}
+              </div>
+            )}
+          </CardContent>
+        )}
+      </Card>
+
       {/* Sessions List */}
+
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
