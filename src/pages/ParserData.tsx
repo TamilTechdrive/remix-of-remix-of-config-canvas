@@ -916,7 +916,7 @@ function SaveToProjectDialog({
     if (!selectedBuild || !parserSessionId) return;
     setSaving(true);
     try {
-      const sessionRes = await api.get(`/parser/sessions/${parserSessionId}`);
+      const sessionRes = await parserApi.getSession(parserSessionId);
       const rawConfig = sessionDetailToRawConfig(sessionRes.data);
       const { nodes, edges } = parseConfigToFlow(rawConfig);
       const res = await projectApi.saveParserConfig(selectedBuild, { parserSessionId, configName: configName || `Parser Config ${new Date().toLocaleString()}`, nodes, edges });
