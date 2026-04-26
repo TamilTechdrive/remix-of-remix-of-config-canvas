@@ -211,7 +211,7 @@ export const projectApi = {
 
 // ===== PARSER API =====
 export const parserApi = {
-  seed: (data?: { jsonData?: any; sessionName?: string }) =>
+  seed: (data?: { jsonData?: any; sessionName?: string; projectId?: string; buildId?: string; moduleId?: string }) =>
     api.post('/parser/seed', data || {}),
   listSessions: () =>
     api.get('/parser/sessions'),
