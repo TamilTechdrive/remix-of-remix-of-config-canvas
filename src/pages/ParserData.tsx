@@ -22,9 +22,13 @@ import {
   Search, FolderOpen, Tv, ChevronsUpDown, Check, GripVertical, Settings, Link2, Wrench,
 } from 'lucide-react';
 import { unifiedParserApi, unifiedProjectApi } from '@/services/unifiedApi';
+import { pythonApi, type PyJobStatus, type PyProgressEvent } from '@/services/pythonApi';
+import { isPythonEnabled, setPythonEnabled, getApiConfig, setPythonBaseUrl } from '@/services/apiConfig';
 import { sessionDetailToRawConfig } from '@/data/parserToConfig';
 import { parseConfigToFlow } from '@/data/configParser';
 import { cn } from '@/lib/utils';
+import { Switch } from '@/components/ui/switch';
+import { Progress } from '@/components/ui/progress';
 
 interface ParserSession {
   id: string;
@@ -176,6 +180,62 @@ export default function ParserData() {
   const [selectedBuild, setSelectedBuild] = useState('');
   const [selectedModule, setSelectedModule] = useState('');
   const [draggedSession, setDraggedSession] = useState<string | null>(null);
+
+  // Python heavy-ingestion state
+  const [pyEnabled, setPyEnabled] = useState<boolean>(isPythonEnabled());
+  const [pyUrl, setPyUrlState] = useState<string>(getApiConfig().pythonBaseUrl);
+  const [pyFilePath, setPyFilePath] = useState<string>('');
+  const [pyJob, setPyJob] = useState<PyJobStatus | null>(null);
+  const [pyProgress, setPyProgress] = useState<PyProgressEvent | null>(null);
+  const pyWatcherRef = useRef<(() => void) | null>(null);
+
+  const startPythonJob = async () => {
+    if (!pyFilePath.trim()) { toast.error('Enter the server-side file path'); return; }
+    try {
+      const { jobId } = await pythonApi.submit({
+        filePath: pyFilePath.trim(),
+        sessionName: sessionName || undefined,
+        projectId: selectedProject || undefined,
+        buildId: selectedBuild || undefined,
+        moduleId: selectedModule || undefined,
+        storeMode: 'both',
+      });
+      toast.success(`Python job ${jobId} queued`);
+      const initial = await pythonApi.get(jobId);
+      setPyJob(initial); setPyProgress(null);
+      // Live progress
+      pyWatcherRef.current?.();
+      pyWatcherRef.current = pythonApi.watch(
+        jobId,
+        (ev) => {
+          setPyProgress(ev);
+          if (ev.stage === 'completed' || ev.stage === 'error' || ev.stage === 'cancelled') {
+            pythonApi.get(jobId).then(setPyJob).catch(() => {});
+            queryClient.invalidateQueries({ queryKey: ['parser-sessions'] });
+            if (ev.stage === 'completed') toast.success('Python parse completed');
+            if (ev.stage === 'error') toast.error(`Python parse failed: ${ev.error || ''}`);
+          }
+        },
+        () => toast.error('WebSocket error from Python service'),
+      );
+    } catch (err: any) {
+      toast.error(err?.message || 'Failed to submit Python job');
+    }
+  };
+
+  const cancelPythonJob = async () => {
+    if (!pyJob) return;
+    try { await pythonApi.cancel(pyJob.jobId); toast.success('Cancel requested'); }
+    catch { toast.error('Cancel failed'); }
+  };
+
+  const togglePython = (val: boolean) => {
+    setPyEnabled(val); setPythonEnabled(val);
+    toast.success(val ? 'Python service enabled for huge files' : 'Python service disabled');
+  };
+
+  const savePyUrl = (url: string) => { setPyUrlState(url); setPythonBaseUrl(url); };
+
 
   const { data: projects } = useQuery({
     queryKey: ['projects-list'],
@@ -390,7 +450,82 @@ export default function ParserData() {
         </CardContent>
       </Card>
 
+      {/* Python Heavy Ingestion (multi-GB JSON) */}
+      <Card className="border-primary/30">
+        <CardHeader>
+          <div className="flex items-start justify-between gap-3 flex-wrap">
+            <div>
+              <CardTitle className="text-lg flex items-center gap-2">
+                <Wrench className="h-5 w-5" /> Python Heavy Ingestion
+                <Badge variant="outline" className="ml-1 text-[10px]">11 GB+ JSON</Badge>
+              </CardTitle>
+              <CardDescription>
+                Stream-parse huge parser outputs server-side via the FastAPI service in <code>pyparser/</code>.
+                Resolves Toolset ↔ Define ↔ Env relationships and stores to DB + Parquet shards.
+              </CardDescription>
+            </div>
+            <div className="flex items-center gap-2">
+              <Label htmlFor="py-toggle" className="text-xs">Enabled</Label>
+              <Switch id="py-toggle" checked={pyEnabled} onCheckedChange={togglePython} />
+            </div>
+          </div>
+        </CardHeader>
+        {pyEnabled && (
+          <CardContent className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="space-y-1">
+                <Label className="text-xs text-muted-foreground">Python service URL</Label>
+                <Input value={pyUrl} onChange={(e) => savePyUrl(e.target.value)} placeholder="http://localhost:8800" />
+              </div>
+              <div className="space-y-1">
+                <Label className="text-xs text-muted-foreground">Server-side JSON path (no upload)</Label>
+                <Input value={pyFilePath} onChange={(e) => setPyFilePath(e.target.value)} placeholder="/data/parser_output.json" />
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Button onClick={startPythonJob} disabled={pyJob?.state === 'running' || pyJob?.state === 'queued'}>
+                <Database className="h-4 w-4 mr-2" />
+                Start Python Parse Job
+              </Button>
+              {pyJob && (pyJob.state === 'running' || pyJob.state === 'queued') && (
+                <Button variant="outline" onClick={cancelPythonJob}><Trash2 className="h-4 w-4 mr-2" />Cancel</Button>
+              )}
+              <Button variant="ghost" size="sm" onClick={() => pythonApi.health().then(h => toast.success(`pyparser ok (${h.service})`)).catch(() => toast.error('pyparser unreachable'))}>
+                <RefreshCw className="h-4 w-4 mr-2" /> Health
+              </Button>
+            </div>
+
+            {(pyJob || pyProgress) && (
+              <div className="p-3 rounded-lg bg-muted/40 border space-y-2">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-medium">
+                    Job <code className="text-primary">{pyJob?.jobId}</code> — stage:{' '}
+                    <Badge variant="outline">{pyProgress?.stage || pyJob?.stage || '—'}</Badge>
+                  </span>
+                  <span className="text-muted-foreground">
+                    {(((pyProgress?.progress ?? pyJob?.progress ?? 0) * 100) | 0)}%
+                    {pyProgress?.bytesTotal
+                      ? ` · ${(pyProgress.bytesRead! / 1e9).toFixed(2)} / ${(pyProgress.bytesTotal / 1e9).toFixed(2)} GB`
+                      : ''}
+                  </span>
+                </div>
+                <Progress value={((pyProgress?.progress ?? pyJob?.progress ?? 0) * 100)} className="h-2" />
+                {((pyProgress?.rows && Object.keys(pyProgress.rows).length > 0) || (pyJob?.rows && Object.keys(pyJob.rows).length > 0)) && (
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {Object.entries(pyProgress?.rows || pyJob?.rows || {}).map(([k, v]) => (
+                      <Badge key={k} variant="outline" className="text-[10px]">{k}: {v.toLocaleString()}</Badge>
+                    ))}
+                  </div>
+                )}
+                {pyJob?.error && <p className="text-xs text-destructive">{pyJob.error}</p>}
+              </div>
+            )}
+          </CardContent>
+        )}
+      </Card>
+
       {/* Sessions List */}
+
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">

@@ -1,8 +1,14 @@
 /**
  * API Configuration & Backend Switcher
- * 
- * Controls which backend (Node.js or PHP) is used for all API calls.
- * Also controls whether security features (JWT auth) are enabled.
+ *
+ * Controls which backend is used for API calls:
+ *   - 'node'   → Node.js / Express   (default)
+ *   - 'php'    → phpbackend2 (legacy MSSQL/MySQL)
+ *
+ * The Python parser service is a *separate* compute layer used for huge
+ * (multi-GB) JSON parsing. It is enabled independently via `pythonEnabled`
+ * and used only by the Parser Data screen for heavy ingestion. Light CRUD
+ * still goes through node/php.
  */
 
 export type ApiBackend = 'node' | 'php';
@@ -12,6 +18,9 @@ interface ApiConfig {
   securityEnabled: boolean;
   phpBaseUrl: string;
   nodeBaseUrl: string;
+  pythonEnabled: boolean;
+  pythonBaseUrl: string;
+  pythonWsUrl: string;
 }
 
 const STORAGE_KEY = 'cf_api_config';
@@ -21,6 +30,9 @@ const DEFAULT_CONFIG: ApiConfig = {
   securityEnabled: true,
   phpBaseUrl: import.meta.env.VITE_PHP_API_URL || 'http://localhost/phpbackend2',
   nodeBaseUrl: import.meta.env.VITE_API_URL || 'http://localhost:4000/api',
+  pythonEnabled: false,
+  pythonBaseUrl: import.meta.env.VITE_PY_API_URL || 'http://localhost:8800',
+  pythonWsUrl: import.meta.env.VITE_PY_WS_URL || 'ws://localhost:8800',
 };
 
 function loadConfig(): ApiConfig {
@@ -60,12 +72,31 @@ export function setNodeBaseUrl(url: string) {
   _persist();
 }
 
+export function setPythonEnabled(enabled: boolean) {
+  currentConfig.pythonEnabled = enabled;
+  _persist();
+}
+
+export function setPythonBaseUrl(url: string) {
+  currentConfig.pythonBaseUrl = url;
+  // Auto-derive ws URL from http URL when user only sets the http one.
+  try {
+    const u = new URL(url);
+    currentConfig.pythonWsUrl = `${u.protocol === 'https:' ? 'wss:' : 'ws:'}//${u.host}`;
+  } catch { /* ignore */ }
+  _persist();
+}
+
 export function isPhpBackend(): boolean {
   return currentConfig.backend === 'php';
 }
 
 export function isSecurityEnabled(): boolean {
   return currentConfig.securityEnabled;
+}
+
+export function isPythonEnabled(): boolean {
+  return currentConfig.pythonEnabled;
 }
 
 function _persist() {
