@@ -21,7 +21,7 @@ import {
   Save, Plus, AlertTriangle, AlertCircle, Info, Package, MapPin, ArrowRight,
   Search, FolderOpen, Tv, ChevronsUpDown, Check, GripVertical, Settings, Link2, Wrench,
 } from 'lucide-react';
-import api, { projectApi } from '@/services/api';
+import { unifiedParserApi, unifiedProjectApi } from '@/services/unifiedApi';
 import { sessionDetailToRawConfig } from '@/data/parserToConfig';
 import { parseConfigToFlow } from '@/data/configParser';
 import { cn } from '@/lib/utils';
@@ -38,15 +38,8 @@ interface ParserSession {
   created_at: string;
 }
 
-const parserApi = {
-  seed: (data: { jsonData?: any; sessionName?: string; projectId?: string; buildId?: string; moduleId?: string }) =>
-    api.post('/parser/seed', data),
-  listSessions: () => api.get('/parser/sessions'),
-  getSession: (id: string) => api.get(`/parser/sessions/${id}`),
-  deleteSession: (id: string) => api.delete(`/parser/sessions/${id}`),
-  exportCSV: (id: string, sheet: string) =>
-    api.get(`/parser/sessions/${id}/export`, { params: { sheet }, responseType: 'blob' }),
-};
+const parserApi = unifiedParserApi;
+const projectApi = unifiedProjectApi;
 
 const MODULE_COLORS: Record<string, string> = {
   eDBE: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
@@ -923,7 +916,7 @@ function SaveToProjectDialog({
     if (!selectedBuild || !parserSessionId) return;
     setSaving(true);
     try {
-      const sessionRes = await api.get(`/parser/sessions/${parserSessionId}`);
+      const sessionRes = await parserApi.getSession(parserSessionId);
       const rawConfig = sessionDetailToRawConfig(sessionRes.data);
       const { nodes, edges } = parseConfigToFlow(rawConfig);
       const res = await projectApi.saveParserConfig(selectedBuild, { parserSessionId, configName: configName || `Parser Config ${new Date().toLocaleString()}`, nodes, edges });
