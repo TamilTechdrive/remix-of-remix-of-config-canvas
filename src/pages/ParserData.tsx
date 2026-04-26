@@ -22,9 +22,13 @@ import {
   Search, FolderOpen, Tv, ChevronsUpDown, Check, GripVertical, Settings, Link2, Wrench,
 } from 'lucide-react';
 import { unifiedParserApi, unifiedProjectApi } from '@/services/unifiedApi';
+import { pythonApi, type PyJobStatus, type PyProgressEvent } from '@/services/pythonApi';
+import { isPythonEnabled, setPythonEnabled, getApiConfig, setPythonBaseUrl } from '@/services/apiConfig';
 import { sessionDetailToRawConfig } from '@/data/parserToConfig';
 import { parseConfigToFlow } from '@/data/configParser';
 import { cn } from '@/lib/utils';
+import { Switch } from '@/components/ui/switch';
+import { Progress } from '@/components/ui/progress';
 
 interface ParserSession {
   id: string;
