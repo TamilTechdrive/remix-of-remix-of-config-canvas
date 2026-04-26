@@ -181,6 +181,62 @@ export default function ParserData() {
   const [selectedModule, setSelectedModule] = useState('');
   const [draggedSession, setDraggedSession] = useState<string | null>(null);
 
+  // Python heavy-ingestion state
+  const [pyEnabled, setPyEnabled] = useState<boolean>(isPythonEnabled());
+  const [pyUrl, setPyUrlState] = useState<string>(getApiConfig().pythonBaseUrl);
+  const [pyFilePath, setPyFilePath] = useState<string>('');
+  const [pyJob, setPyJob] = useState<PyJobStatus | null>(null);
+  const [pyProgress, setPyProgress] = useState<PyProgressEvent | null>(null);
+  const pyWatcherRef = useRef<(() => void) | null>(null);
+
+  const startPythonJob = async () => {
+    if (!pyFilePath.trim()) { toast.error('Enter the server-side file path'); return; }
+    try {
+      const { jobId } = await pythonApi.submit({
+        filePath: pyFilePath.trim(),
+        sessionName: sessionName || undefined,
+        projectId: selectedProject || undefined,
+        buildId: selectedBuild || undefined,
+        moduleId: selectedModule || undefined,
+        storeMode: 'both',
+      });
+      toast.success(`Python job ${jobId} queued`);
+      const initial = await pythonApi.get(jobId);
+      setPyJob(initial); setPyProgress(null);
+      // Live progress
+      pyWatcherRef.current?.();
+      pyWatcherRef.current = pythonApi.watch(
+        jobId,
+        (ev) => {
+          setPyProgress(ev);
+          if (ev.stage === 'completed' || ev.stage === 'error' || ev.stage === 'cancelled') {
+            pythonApi.get(jobId).then(setPyJob).catch(() => {});
+            queryClient.invalidateQueries({ queryKey: ['parser-sessions'] });
+            if (ev.stage === 'completed') toast.success('Python parse completed');
+            if (ev.stage === 'error') toast.error(`Python parse failed: ${ev.error || ''}`);
+          }
+        },
+        () => toast.error('WebSocket error from Python service'),
+      );
+    } catch (err: any) {
+      toast.error(err?.message || 'Failed to submit Python job');
+    }
+  };
+
+  const cancelPythonJob = async () => {
+    if (!pyJob) return;
+    try { await pythonApi.cancel(pyJob.jobId); toast.success('Cancel requested'); }
+    catch { toast.error('Cancel failed'); }
+  };
+
+  const togglePython = (val: boolean) => {
+    setPyEnabled(val); setPythonEnabled(val);
+    toast.success(val ? 'Python service enabled for huge files' : 'Python service disabled');
+  };
+
+  const savePyUrl = (url: string) => { setPyUrlState(url); setPythonBaseUrl(url); };
+
+
   const { data: projects } = useQuery({
     queryKey: ['projects-list'],
     queryFn: async () => { try { return (await projectApi.list()).data; } catch { return []; } },
